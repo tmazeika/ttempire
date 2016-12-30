@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth|Roboto:300">
 
-    <title>PingPongShop</title>
+    <title>{{ $title }} | PingPongShop</title>
 </head>
 
 <body>
