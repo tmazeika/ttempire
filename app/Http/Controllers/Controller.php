@@ -11,5 +11,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    const TitleKey = 'title';
+    const TITLE_KEY = 'title';
 }

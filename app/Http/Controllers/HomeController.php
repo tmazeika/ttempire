@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home')->with(parent::TitleKey, trans('page.title.home'));
+        return view('home')->with(parent::TITLE_KEY, trans('page.title.home'));
     }
 }
