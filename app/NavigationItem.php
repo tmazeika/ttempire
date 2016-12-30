@@ -4,18 +4,18 @@ namespace PingPongShop;
 
 class NavigationItem
 {
-    public function __construct($title, $url)
+    public function __construct(string $title, string $url)
     {
         $this->title = $title;
         $this->url = $url;
     }
 
-    public function getTitle()
+    public function getTitle() : string
     {
         return $this->title;
     }
 
-    public function getUrl()
+    public function getUrl() : string
     {
         return $this->url;
     }

@@ -178,6 +178,7 @@ return [
         PingPongShop\Providers\EventServiceProvider::class,
         PingPongShop\Providers\RouteServiceProvider::class,
         PingPongShop\Providers\NavigationServiceProvider::class,
+        PingPongShop\Providers\ProductServiceProvider::class,
 
     ],
 
