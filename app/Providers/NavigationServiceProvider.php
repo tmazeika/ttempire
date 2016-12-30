@@ -17,9 +17,9 @@ class NavigationServiceProvider extends ServiceProvider
     {
         view()->composer('*', function(View $view) {
             $view->with('navItems', [
-                new NavigationItem('Shop', url('/shop')),
-                new NavigationItem('Blog', '/blog'),
-                new NavigationItem('Contact', url('/contact')),
+                new NavigationItem(trans('page.title.shop'),    url('/shop')),
+                new NavigationItem(trans('page.title.blog'),    '/blog'),
+                new NavigationItem(trans('page.title.contact'), url('/contact')),
             ]);
         });
     }

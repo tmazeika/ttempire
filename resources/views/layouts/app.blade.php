@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth|Roboto:300">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 
