@@ -14,3 +14,4 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/shop', 'ShopController@index');
+Route::post('/shop/checkout', 'ShopController@checkout');

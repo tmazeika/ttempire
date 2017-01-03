@@ -2,6 +2,7 @@
 
 namespace PingPongShop\Providers;
 
+use Braintree_Gateway;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
