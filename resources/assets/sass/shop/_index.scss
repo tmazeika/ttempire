@@ -1,0 +1,28 @@
+@import "checkout";
+
+.shop {
+  max-width: 70em;
+  margin: 0 auto;
+
+  // flex
+  display: flex;
+  align-items: flex-start;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.shop-products {
+  // flex
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.shop-summary {
+  border: 1px solid green;
+
+  width: 20em;
+}

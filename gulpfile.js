@@ -15,9 +15,6 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
     mix.sass('app.scss')
-       .scripts('app.js')
-       .version(['css/app.css', 'js/app.js'])
-       .browserSync({
-           proxy: 'pingpongshop.dev'
-       });
+       .rollup('**.js')
+       .version(['css/app.css', 'js/all.js']);
 });

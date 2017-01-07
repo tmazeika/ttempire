@@ -15,9 +15,9 @@ class NavigationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['home', 'shop', 'contact'], function(View $view) {
+        view()->composer(['home', 'shop.*', 'contact'], function(View $view) {
             $view->with('navItems', [
-                new NavigationItem(trans('page.title.shop'), url('/shop'), $view->name() === 'shop'),
+                new NavigationItem(trans('page.title.shop.index'), url('/shop'), $view->name() === 'shop.index'),
                 new NavigationItem(trans('page.title.blog'), '/blog', false),
                 new NavigationItem(trans('page.title.contact'), url('/contact'), $view->name() === 'contact'),
             ]);

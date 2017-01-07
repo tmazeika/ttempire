@@ -1,6 +1,11 @@
 @import "variables";
-@import "media_mixins";
+@import "media-mixins";
+
+// partials
 @import "header";
+
+// pages
+@import "shop/index";
 
 body {
   background-color: #f2f2f2;

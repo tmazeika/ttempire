@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300|Roboto:300">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300|Roboto:300"
+          integrity="sha256-jAQvbcwP3Hc6MNwX3ZsKhgqNBs1YZwa/73jf4EVn2FM="
+          crossorigin="anonymous">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+
+    @yield('head')
 
     <title>{{ $title }} | Ping Pong Shop</title>
 </head>

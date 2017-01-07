@@ -13,5 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/shop', 'ShopController@index');
-Route::post('/shop/checkout', 'ShopController@checkout');
+Route::group(['prefix' => 'shop'], function() {
+    Route::get('/', 'ShopController@index');
+
+    Route::get('/checkout', 'ShopController@showCheckout');
+    Route::post('/checkout', 'ShopController@checkout');
+});

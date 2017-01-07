@@ -16,7 +16,7 @@ class ProductServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('shop', function(View $view) {
+        view()->composer('shop.*', function(View $view) {
             $products = [
                 new Product(trans('products.1star'), asset('img/product_1star.jpg'), 195, 500),
 

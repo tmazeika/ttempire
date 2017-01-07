@@ -9,9 +9,14 @@ class ShopController extends Controller
 {
     public function index()
     {
-        return view('shop')->with([
-            parent::TITLE_KEY => trans('page.title.shop'),
-            'clientToken' => Braintree_ClientToken::generate(),
+        return view('shop.index')->with(parent::TITLE_KEY, trans('page.title.shop.index'));
+    }
+
+    public function showCheckout()
+    {
+        return view('shop.checkout')->with([
+            parent::TITLE_KEY => trans('page.title.shop.checkout'),
+            'braintreeToken' => Braintree_ClientToken::generate(),
         ]);
     }
 
