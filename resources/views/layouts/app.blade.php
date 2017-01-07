@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth|Roboto:300">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300|Roboto:300">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 
-    <title>{{ $title }} | PingPongShop</title>
+    <title>{{ $title }} | Ping Pong Shop</title>
 </head>
 
 <body>

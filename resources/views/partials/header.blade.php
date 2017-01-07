@@ -1,9 +1,15 @@
 <header class="header">
-    <p>Header</p>
-
-    <a href="{{ url('/') }}">@lang('page.title.home')</a>
+    <div class="header-item rotatable">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('img/logo_ico.png') }}" alt="@lang('page.title.home')"/>
+        </a>
+    </div>
 
     @foreach($navItems as $navItem)
-        <a href="{{ $navItem->getUrl() }}">{{ $navItem->getTitle() }}</a>
+        <div class="header-item">
+            <a class="{{ $navItem->isActive() ? 'active' : '' }}" href="{{ $navItem->getUrl() }}">
+                {{ $navItem->getTitle() }}
+            </a>
+        </div>
     @endforeach
 </header>

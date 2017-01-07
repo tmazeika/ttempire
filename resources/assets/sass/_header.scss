@@ -1,0 +1,49 @@
+.header {
+  padding: 0.5em;
+  display: flex;
+}
+
+.header-item {
+  margin: 0 1em;
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    margin: 0 0.5em;
+  }
+
+  > a {
+    color: $title-dim-color;
+    font: $title-font;
+    text-decoration: none;
+    text-transform: lowercase;
+
+    @include mobile {
+      font-size: 1.5em;
+    }
+
+    transition: color 0.1s;
+
+    &.active {
+      color: $accent-color;
+    }
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  &.rotatable {
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: rotate(-7deg);
+    }
+  }
+
+  img {
+    @include mobile {
+      width: 75%;
+    }
+  }
+}

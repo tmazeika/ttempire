@@ -4,10 +4,11 @@ namespace PingPongShop;
 
 class NavigationItem
 {
-    public function __construct(string $title, string $url)
+    public function __construct(string $title, string $url, bool $active)
     {
         $this->title = $title;
         $this->url = $url;
+        $this->active = $active;
     }
 
     public function getTitle() : string
@@ -18,5 +19,10 @@ class NavigationItem
     public function getUrl() : string
     {
         return $this->url;
+    }
+
+    public function isActive() : bool
+    {
+        return $this->active;
     }
 }
