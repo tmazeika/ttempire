@@ -1,5 +1,7 @@
 @import 'checkout';
 
+$first-shop-breakpoint: $content-width + 1;
+
 .shop-product-desc {
   color: #fff;
   font: $font;
@@ -29,7 +31,7 @@
   margin: 0 1em 1em 1em;
   padding: 1em;
 
-  @include breakpoint-outside($mobile-desktop-breakpoint, $content-width) {
+  @include breakpoint-outside($mobile-desktop-breakpoint, $first-shop-breakpoint) {
     margin: 0 auto 1em auto;
   }
 
@@ -57,7 +59,7 @@
   }
 
   &:nth-child(1) {
-    background-color: #334;
+    background-color: $dark-color;
 
     @include desktop {
       clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
@@ -76,7 +78,7 @@
     }
 
     .shop-product-desc {
-      border-left: 2px solid #334;
+      border-left: 2px solid $dark-color;
     }
   }
 }
@@ -86,7 +88,7 @@
 
   width: $width;
 
-  @include breakpoint-lte($content-width) {
+  @include breakpoint-lte($first-shop-breakpoint) {
     width: #{$width / 1.5};
   }
 
@@ -119,16 +121,6 @@
       font-size: 0.75em;
     }
 
-    @include breakpoint-gt($content-width) {
-      &.long {
-        display: block;
-      }
-    }
-
-    @include breakpoint-lte($content-width) {
-      &.short {
-        display: block;
-      }
-    }
+    @include breakpoint-visibility($first-shop-breakpoint, '.short', '.long');
   }
 }

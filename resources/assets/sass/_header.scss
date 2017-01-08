@@ -41,11 +41,13 @@
     }
   }
 
-  &.rotatable {
-    transition: transform 0.2s;
+  @include desktop {
+    &.rotatable {
+      transition: transform 0.2s;
 
-    &:hover {
-      transform: rotate(-7deg);
+      &:hover {
+        transform: rotate(-7deg);
+      }
     }
   }
 }

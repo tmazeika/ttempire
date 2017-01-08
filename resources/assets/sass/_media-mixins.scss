@@ -1,18 +1,32 @@
 @mixin breakpoint-gt($width) {
-  @media (min-width: $width) {
+  @media not all and (max-width: $width) {
     @content;
   }
 }
 
 @mixin breakpoint-lte($width) {
-  @media not all and (min-width: $width) {
+  @media (max-width: $width) {
     @content;
   }
 }
 
 @mixin breakpoint-outside($lower, $upper) {
-  @media (min-width: $upper), not all and (min-width: $lower) {
+  @media not all and (max-width: $upper), (max-width: $lower) {
     @content;
+  }
+}
+
+@mixin breakpoint-visibility($breakpoint, $min-class, $max-class, $display: block) {
+  @include breakpoint-lte($breakpoint) {
+    &#{$min-class} {
+      display: $display;
+    }
+  }
+
+  @include breakpoint-gt($breakpoint) {
+    &#{$max-class} {
+      display: $display;
+    }
   }
 }
 
