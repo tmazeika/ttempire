@@ -4,16 +4,16 @@
     <section class="shop">
         @foreach($products as $product)
             <div class="shop-product-container">
-                <div class="shop-product-cart">
-                    <img src="{{ asset('img/fa_shopping_cart.svg') }}" alt="Add to cart" width="25"/>
-                </div>
+                <button class="shop-product-cart" data-product-id="{{ $product->getId() }}">
+                    <img src="{{ asset('img/fa_shopping_cart.svg') }}" alt="Add to cart" width="32"/>
+                </button>
 
                 <div class="shop-product" data-product-id="{{ $product->getId() }}">
-                    <img class="shop-product-img" src="{{ $product->getImg() }}"/>
+                    <img class="shop-product-img" src="{{ asset($product->getImg()) }}"/>
 
                     <div class="shop-product-info">
-                        <h1 class="shop-product-desc">{{ $product->getDesc() }}</h1>
-                        <sub class="shop-product-title">{{ $product->getTitle() }}</sub>
+                        <h1 class="shop-product-desc">{{ trans($product->getDesc()) }}</h1>
+                        <sub class="shop-product-title">{{ trans($product->getTitle()) }}</sub>
                     </div>
 
                     <div class="spacer"></div>

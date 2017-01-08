@@ -4,41 +4,20 @@ namespace PingPongShop\Providers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
-use PingPongShop\Product;
-use PingPongShop\ProductDiscount;
+use PingPongShop\Contracts\ProductRepository;
+use PingPongShop\Repositories\ProductRepositoryImpl;
 
 class ProductServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(ProductRepository $productRepo)
     {
-        view()->composer('shop.*', function(View $view) {
-            $products = [
-                new Product(trans('products.1star.title'), trans('products.1star.desc'), asset('img/product_1star.svg'), 195, 500),
-
-                new Product(trans('products.3star.title'), trans('products.3star.desc'), asset('img/product_3star.svg'), 294, 300,
-                    new ProductDiscount(3, 60)),
-            ];
-
-            foreach ($products as $i => $product) {
-                $product->setId($i);
-            }
-
-            $view->with('products', $products);
+        view()->composer('shop.*', function(View $view) use ($productRepo) {
+            $view->with('products', $productRepo->getProducts());
         });
     }
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        //
+        $this->app->bind(ProductRepository::class, ProductRepositoryImpl::class);
     }
 }

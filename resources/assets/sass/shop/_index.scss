@@ -24,6 +24,7 @@ $first-shop-breakpoint: $content-width + 1;
   $size: 50px;
   $margin: 8px;
   $border-width: 1px;
+  $anim-time: 0.2s;
 
   $gold: #ebd939;
 
@@ -32,16 +33,18 @@ $first-shop-breakpoint: $content-width + 1;
   border-radius: $size;
   box-shadow: 0 0 7px $gold;
   cursor: pointer;
+  outline: none;
 
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color $anim-time, border-color $anim-time, box-shadow $anim-time;
 
   width: $size;
   height: $size;
+  padding: 0;
 
   // positioning
   position: absolute;
   top: -0.5em;
-  left: 4em;
+  left: 5em;
   z-index: 1;
 
   @include shop-product-cart-img($size, $margin, $border-width);
@@ -62,6 +65,7 @@ $first-shop-breakpoint: $content-width + 1;
   &:hover {
     background-color: #fff;
     border-color: #eee;
+    box-shadow: 0 0 7px #fff;
   }
 }
 

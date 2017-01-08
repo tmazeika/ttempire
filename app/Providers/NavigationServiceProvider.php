@@ -4,33 +4,21 @@ namespace PingPongShop\Providers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
+use PingPongShop\Contracts\NavigationRepository;
 use PingPongShop\NavigationItem;
+use PingPongShop\Repositories\NavigationRepositoryImpl;
 
 class NavigationServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(NavigationRepository $navigationRepo)
     {
-        view()->composer(['home', 'shop.*', 'contact'], function(View $view) {
-            $view->with('navItems', [
-                new NavigationItem(trans('page.title.shop.index'), url('/shop'), $view->name() === 'shop.index'),
-                new NavigationItem(trans('page.title.blog'), '/blog', false),
-                new NavigationItem(trans('page.title.contact'), url('/contact'), $view->name() === 'contact'),
-            ]);
+        view()->composer(['home', 'shop.*', 'contact'], function(View $view) use ($navigationRepo) {
+            $view->with('navItems', $navigationRepo->getItems($view->name()));
         });
     }
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
     public function register()
     {
-        //
+        $this->app->bind(NavigationRepository::class, NavigationRepositoryImpl::class);
     }
 }

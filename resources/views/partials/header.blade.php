@@ -8,7 +8,7 @@
     @foreach($navItems as $navItem)
         <div class="header-item">
             <a class="{{ $navItem->isActive() ? 'active' : '' }}" href="{{ $navItem->getUrl() }}">
-                {{ $navItem->getTitle() }}
+                {{ trans($navItem->getTitle()) }}
             </a>
         </div>
     @endforeach
