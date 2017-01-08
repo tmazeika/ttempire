@@ -2,6 +2,69 @@
 
 $first-shop-breakpoint: $content-width + 1;
 
+.shop-product-container {
+  max-width: 70em;
+  margin: 0 1em 1em 1em;
+
+  @include breakpoint-outside($mobile-desktop-breakpoint, $first-shop-breakpoint) {
+    margin: 0 auto 1em auto;
+  }
+
+  position: relative;
+}
+
+@mixin shop-product-cart-img($size, $margin, $border-width) {
+  img {
+    width: #{$size - $margin * 2 - $border-width * 2};
+    margin: $margin;
+  }
+}
+
+.shop-product-cart {
+  $size: 50px;
+  $margin: 8px;
+  $border-width: 1px;
+
+  $gold: #ebd939;
+
+  background-color: $gold;
+  border: $border-width solid darken($gold, 15%);
+  border-radius: $size;
+  box-shadow: 0 0 7px $gold;
+  cursor: pointer;
+
+  transition: background-color 0.2s, border-color 0.2s;
+
+  width: $size;
+  height: $size;
+
+  // positioning
+  position: absolute;
+  top: -0.5em;
+  left: 4em;
+  z-index: 1;
+
+  @include shop-product-cart-img($size, $margin, $border-width);
+
+  @include mobile {
+    $size: 30px;
+    $margin: 4px;
+
+    width: $size;
+    height: $size;
+
+    top: 0.25em;
+    left: 0.25em;
+
+    @include shop-product-cart-img($size, $margin, $border-width);
+  }
+
+  &:hover {
+    background-color: #fff;
+    border-color: #eee;
+  }
+}
+
 .shop-product-desc {
   color: #fff;
   font: $font;
@@ -9,7 +72,6 @@ $first-shop-breakpoint: $content-width + 1;
   text-transform: lowercase;
 
   margin: 0 0 0.5em 0;
-  padding-left: 0.5em;
 
   @include mobile {
     font-size: 1.25em;
@@ -26,14 +88,21 @@ $first-shop-breakpoint: $content-width + 1;
   }
 }
 
-.shop-product {
-  max-width: 70em;
-  margin: 0 1em 1em 1em;
-  padding: 1em;
+@mixin shop-product-child($bg-color, $polygon, $opp-color) {
+  background-color: $bg-color;
 
-  @include breakpoint-outside($mobile-desktop-breakpoint, $first-shop-breakpoint) {
-    margin: 0 auto 1em auto;
+  @include desktop {
+    clip-path: $polygon;
   }
+
+  .shop-product-desc::before {
+    color: $opp-color;
+    content: '> ';
+  }
+}
+
+.shop-product {
+  padding: 1em;
 
   @include desktop {
     padding: {
@@ -58,28 +127,12 @@ $first-shop-breakpoint: $content-width + 1;
     }
   }
 
-  &:nth-child(1) {
-    background-color: $dark-color;
-
-    @include desktop {
-      clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
-    }
-
-    .shop-product-desc {
-      border-left: 2px solid $accent-color;
-    }
+  &[data-product-id="0"] {
+    @include shop-product-child($dark-color, polygon(0 0, 95% 0, 100% 100%, 5% 100%), $accent-color);
   }
 
-  &:nth-child(2) {
-    background-color: $accent-color;
-
-    @include desktop {
-      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
-    }
-
-    .shop-product-desc {
-      border-left: 2px solid $dark-color;
-    }
+  &[data-product-id="1"] {
+    @include shop-product-child($accent-color, polygon(5% 0, 100% 0, 95% 100%, 0 100%), $dark-color);
   }
 }
 
@@ -112,6 +165,10 @@ $first-shop-breakpoint: $content-width + 1;
 
   @include mobile {
     font-size: 1.25em;
+  }
+
+  &:not(.sub) {
+    border-bottom: 1px solid #fff;
   }
 
   &.sub {
