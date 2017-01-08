@@ -1,13 +1,31 @@
-$media-breakpoint: 500px;
-
-@mixin mobile {
-  @media screen and (max-width: $media-breakpoint) {
+@mixin breakpoint-gt($width) {
+  @media (min-width: $width) {
     @content;
   }
 }
 
+@mixin breakpoint-lte($width) {
+  @media not all and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin breakpoint-outside($lower, $upper) {
+  @media (min-width: $upper), not all and (min-width: $lower) {
+    @content;
+  }
+}
+
+$mobile-desktop-breakpoint: 50em;
+
 @mixin desktop {
-  @media screen and (min-width: #{$media-breakpoint + 1}) {
+  @include breakpoint-gt($mobile-desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include breakpoint-lte($mobile-desktop-breakpoint) {
     @content;
   }
 }

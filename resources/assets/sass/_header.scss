@@ -1,20 +1,28 @@
 .header {
-  padding: 0.5em;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 1em;
   display: flex;
 }
 
 .header-item {
   margin: 0 1em;
+
+  // flex
   display: flex;
   align-items: center;
 
   @include mobile {
     margin: 0 0.5em;
+
+    img {
+      width: 75%;
+    }
   }
 
   > a {
-    color: $title-dim-color;
-    font: $title-font;
+    color: $dim-color;
+    font: $font;
     text-decoration: none;
     text-transform: lowercase;
 
@@ -38,12 +46,6 @@
 
     &:hover {
       transform: rotate(-7deg);
-    }
-  }
-
-  img {
-    @include mobile {
-      width: 75%;
     }
   }
 }

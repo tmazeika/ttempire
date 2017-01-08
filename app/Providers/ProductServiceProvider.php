@@ -18,9 +18,9 @@ class ProductServiceProvider extends ServiceProvider
     {
         view()->composer('shop.*', function(View $view) {
             $products = [
-                new Product(trans('products.1star'), asset('img/product_1star.jpg'), 195, 500),
+                new Product(trans('products.1star.title'), trans('products.1star.desc'), asset('img/product_1star.svg'), 195, 500),
 
-                new Product(trans('products.3star'), asset('img/product_3star.jpg'), 294, 300,
+                new Product(trans('products.3star.title'), trans('products.3star.desc'), asset('img/product_3star.svg'), 294, 300,
                     new ProductDiscount(3, 60)),
             ];
 

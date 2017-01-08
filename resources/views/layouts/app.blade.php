@@ -7,8 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300|Roboto:300"
-          integrity="sha256-jAQvbcwP3Hc6MNwX3ZsKhgqNBs1YZwa/73jf4EVn2FM="
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:300,300i|Roboto:300"
           crossorigin="anonymous">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 

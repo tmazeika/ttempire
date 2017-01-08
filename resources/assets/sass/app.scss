@@ -1,14 +1,19 @@
-@import "variables";
-@import "media-mixins";
+@import 'variables';
+@import 'media-mixins';
+@import 'global';
 
 // partials
-@import "header";
+@import 'header';
 
 // pages
-@import "shop/index";
+@import 'shop/index';
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-  background-color: #f2f2f2;
+  background-color: #fff;
 
   margin: 0;
 }

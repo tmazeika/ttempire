@@ -1,28 +1,134 @@
-@import "checkout";
+@import 'checkout';
 
-.shop {
-  max-width: 70em;
-  margin: 0 auto;
+.shop-product-desc {
+  color: #fff;
+  font: $font;
+  font-style: italic;
+  text-transform: lowercase;
 
-  // flex
-  display: flex;
-  align-items: flex-start;
+  margin: 0 0 0.5em 0;
+  padding-left: 0.5em;
 
   @include mobile {
-    flex-direction: column;
+    font-size: 1.25em;
   }
 }
 
-.shop-products {
-  // flex
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.shop-product-title {
+  color: #fff;
+  font: $font;
+  font-size: 1em;
+
+  @include mobile {
+    font-size: 0.75em;
+  }
 }
 
-.shop-summary {
-  border: 1px solid green;
+.shop-product {
+  max-width: 70em;
+  margin: 0 1em 1em 1em;
+  padding: 1em;
 
-  width: 20em;
+  @include breakpoint-outside($mobile-desktop-breakpoint, $content-width) {
+    margin: 0 auto 1em auto;
+  }
+
+  @include desktop {
+    padding: {
+      left: 6em;
+      right: 6em;
+    }
+  }
+
+  @include mobile {
+    padding: 0.75em;
+  }
+
+  // flex
+  display: flex;
+  align-items: center;
+
+  > *:not(:last-child) {
+    margin-right: 2em;
+
+    @include mobile {
+      margin-right: 0.75em;
+    }
+  }
+
+  &:nth-child(1) {
+    background-color: #334;
+
+    @include desktop {
+      clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
+    }
+
+    .shop-product-desc {
+      border-left: 2px solid $accent-color;
+    }
+  }
+
+  &:nth-child(2) {
+    background-color: $accent-color;
+
+    @include desktop {
+      clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    }
+
+    .shop-product-desc {
+      border-left: 2px solid #334;
+    }
+  }
+}
+
+.shop-product-img {
+  $width: 15em;
+
+  width: $width;
+
+  @include breakpoint-lte($content-width) {
+    width: #{$width / 1.5};
+  }
+
+  @include mobile {
+    width: #{$width / 3};
+  }
+}
+
+.shop-product-action {
+  // flex
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shop-product-action-item {
+  color: #fff;
+  font: $font;
+
+  line-height: 2;
+
+  @include mobile {
+    font-size: 1.25em;
+  }
+
+  &.sub {
+    font-size: 1em;
+
+    @include mobile {
+      font-size: 0.75em;
+    }
+
+    @include breakpoint-gt($content-width) {
+      &.long {
+        display: block;
+      }
+    }
+
+    @include breakpoint-lte($content-width) {
+      &.short {
+        display: block;
+      }
+    }
+  }
 }

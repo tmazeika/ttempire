@@ -6,9 +6,10 @@ class Product
 {
     private $id;
 
-    public function __construct(string $title, string $img, float $price, int $qtyInc, ProductDiscount ...$discounts)
+    public function __construct(string $title, string $desc, string $img, float $price, int $qtyInc, ProductDiscount ...$discounts)
     {
         $this->title = $title;
+        $this->desc = $desc;
         $this->img = $img;
         $this->price = $price;
         $this->qtyInc = $qtyInc;
@@ -22,6 +23,11 @@ class Product
     public function getTitle() : string
     {
         return $this->title;
+    }
+
+    public function getDesc() : string
+    {
+        return $this->desc;
     }
 
     public function getImg() : string
