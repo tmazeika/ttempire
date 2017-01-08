@@ -7,12 +7,17 @@ use PingPongShop\NavigationItem;
 
 class NavigationRepositoryImpl implements NavigationRepository
 {
-    function getItems(string $activeView): array
+    function getItems(string $activeView) : array
     {
         return [
             new NavigationItem('page.title.shop.index', url('/shop'), $activeView === 'shop.index'),
             new NavigationItem('page.title.blog', '/blog', false),
             new NavigationItem('page.title.contact', url('/contact'), $activeView === 'contact'),
         ];
+    }
+
+    function getCheckoutItem(string $activeView) : NavigationItem
+    {
+        return new NavigationItem('page.title.shop.checkout', url('/shop/checkout'), $activeView === 'shop.checkout');
     }
 }

@@ -15,6 +15,18 @@ class ShopController extends Controller
         return view('shop.index')->with(parent::TITLE_KEY, trans('page.title.shop.index'));
     }
 
+    public function addCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)
+    {
+        $productId = $request->input('id');
+
+        $this->validate($request, [
+            'id' => 'bail|required|numeric|min:0|max:'.$productRepo->getMaxProductIndex(),
+            'qty' => 'bail|required|numeric|min:'.(-$cart->get($productId)),
+        ]);
+
+        return $cart->add($productId, $request->input('qty'));
+    }
+
     public function getCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)
     {
         $this->validate($request, [

@@ -16,16 +16,20 @@
   }
 }
 
-@mixin breakpoint-visibility($breakpoint, $min-class, $max-class, $display: block) {
-  @include breakpoint-lte($breakpoint) {
-    &#{$min-class} {
-      display: $display;
+@mixin breakpoint-visibility($breakpoint, $min-class: null, $max-class: null, $display: block) {
+  @if($min-class) {
+    @include breakpoint-lte($breakpoint) {
+      &#{$min-class} {
+        display: $display;
+      }
     }
   }
 
-  @include breakpoint-gt($breakpoint) {
-    &#{$max-class} {
-      display: $display;
+  @if($max-class) {
+    @include breakpoint-gt($breakpoint) {
+      &#{$max-class} {
+        display: $display;
+      }
     }
   }
 }

@@ -3,6 +3,7 @@
 namespace PingPongShop\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use PingPongShop\Http\Middleware\SetCheckoutVisibility;
 
 class Kernel extends HttpKernel
 {
@@ -30,6 +31,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \PingPongShop\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \PingPongShop\Http\Middleware\SetCheckoutVisibility::class,
         ],
 
         'api' => [
