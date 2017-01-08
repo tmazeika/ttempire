@@ -6,11 +6,11 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
-class SetCheckoutVisibility
+class LoadShoppingCart
 {
     public function handle(Request $request, Closure $next)
     {
-        View::share(['cartSize' => resolve('PingPongShop\ShoppingCart')->getSize()]);
+        View::share('cart', resolve('PingPongShop\ShoppingCart'));
 
         return $next($request);
     }

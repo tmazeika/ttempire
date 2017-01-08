@@ -67,6 +67,11 @@ $first-shop-breakpoint: $content-width + 1;
     border-color: #eee;
     box-shadow: 0 0 7px #fff;
   }
+
+  .shop-product-cart-txt {
+    color: $dark-color;
+    font: $font;
+  }
 }
 
 .shop-product-desc {

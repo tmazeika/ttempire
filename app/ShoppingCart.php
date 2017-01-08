@@ -34,7 +34,7 @@ class ShoppingCart
 
         $this->updateSession();
 
-        return $this->getSize();
+        return $this->items[$id];
     }
 
     public function get(int $id) : int
@@ -58,7 +58,7 @@ class ShoppingCart
         $this->items[$id] = $qty;
         $this->updateSession();
 
-        return $this->getSize();
+        return $qty;
     }
 
     public function updateSession()

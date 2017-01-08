@@ -13,6 +13,7 @@ class Product
         $this->img = $img;
         $this->price = $price;
         $this->qtyInc = $qtyInc;
+        $this->discounts = $discounts;
     }
 
     public function getId() : int
@@ -43,6 +44,11 @@ class Product
     public function getQtyInc() : int
     {
         return $this->qtyInc;
+    }
+
+    public function getDiscounts() : array
+    {
+        return $this->discounts;
     }
 
     public function setId(int $id)

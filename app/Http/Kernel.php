@@ -31,7 +31,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \PingPongShop\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \PingPongShop\Http\Middleware\SetCheckoutVisibility::class,
+            \PingPongShop\Http\Middleware\LoadShoppingCart::class,
         ],
 
         'api' => [

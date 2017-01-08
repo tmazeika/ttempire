@@ -31,6 +31,6 @@ class ProductRepositoryImpl implements ProductRepository
 
     public function getMaxProductIndex(): int
     {
-        return count($this->products) - 1;
+        return count($this->products);
     }
 }

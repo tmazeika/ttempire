@@ -20,11 +20,14 @@ class ShopController extends Controller
         $productId = $request->input('id');
 
         $this->validate($request, [
-            'id' => 'bail|required|numeric|min:0|max:'.$productRepo->getMaxProductIndex(),
+            'id'  => 'bail|required|numeric|min:0|max:'.$productRepo->getMaxProductIndex(),
             'qty' => 'bail|required|numeric|min:'.(-$cart->get($productId)),
         ]);
 
-        return $cart->add($productId, $request->input('qty'));
+        return response()->json([
+            'product' => $cart->add($productId, $request->input('qty')),
+            'total'   => $cart->getSize(),
+        ]);
     }
 
     public function getCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)
@@ -33,17 +36,23 @@ class ShopController extends Controller
             'id' => 'bail|required|numeric|min:0|max:'.$productRepo->getMaxProductIndex(),
         ]);
 
-        return $cart->get($request->input('id'));
+        return response()->json([
+            'product' => $cart->get($request->input('id')),
+            'total'   => $cart->getSize(),
+        ]);
     }
 
     public function setCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)
     {
         $this->validate($request, [
-            'id' => 'bail|required|numeric|min:0|max:'.$productRepo->getMaxProductIndex(),
+            'id'  => 'bail|required|numeric|min:0|max:'.$productRepo->getMaxProductIndex(),
             'qty' => 'bail|required|numeric|min:0',
         ]);
 
-        return $cart->set($request->input('id'), $request->input('qty'));
+        return response()->json([
+            'product' => $cart->set($request->input('id'), $request->input('qty')),
+            'total'   => $cart->getSize(),
+        ]);
     }
 
     public function resetCart(Request $request)
@@ -55,7 +64,7 @@ class ShopController extends Controller
     {
         return view('shop.checkout')->with([
             parent::TITLE_KEY => trans('page.title.shop.checkout'),
-            'braintreeToken' => Braintree_ClientToken::generate(),
+            'braintreeToken'  => Braintree_ClientToken::generate(),
         ]);
     }
 
