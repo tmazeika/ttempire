@@ -11,7 +11,7 @@ class NavigationRepositoryImpl implements NavigationRepository
     {
         return [
             new NavigationItem('page.title.shop', url('/shop'), $activeView === 'shop'),
-            new NavigationItem('page.title.blog', '/blog', false),
+            new NavigationItem('page.title.blog', 'https://mazeika.me', false),
             new NavigationItem('page.title.contact', url('/contact'), $activeView === 'contact'),
         ];
     }

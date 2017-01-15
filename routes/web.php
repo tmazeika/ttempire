@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/contact', 'ContactController@index');
 
 Route::group(['prefix' => 'shop'], function() {
     Route::get('/', 'ShopController@index');

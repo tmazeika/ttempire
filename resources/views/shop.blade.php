@@ -34,7 +34,3 @@
         @endforeach
     </section>
 @endsection
-
-@section('scripts')
-    @include('partials.js.app')
-@endsection

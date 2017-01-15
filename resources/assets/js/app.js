@@ -1,4 +1,4 @@
-import './shop';
+import './contact';
 
 $.ajaxSetup({
     headers: {
