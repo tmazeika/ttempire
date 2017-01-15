@@ -1,6 +1,8 @@
 @if($cart->getSize())
     <div class="header-item header-item-cart">
         <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+            <input type="hidden" name="cmd" value="_cart"/>
+            <input type="hidden" name="upload" value="1"/>
             <input type="hidden" name="business" value="GFLBCKL9RDD44"/>
             <input type="hidden" name="image_url" value="{{ asset('img/logo_ppbanner.png') }}"/>
             <input type="hidden" name="no_shipping" value="2"/>
@@ -10,21 +12,12 @@
             <input type="hidden" name="shipping" value="0"/>
             <input type="hidden" name="tax" value="0"/>
 
-            @if ($cart->getProductSize() > 1)
-                <input type="hidden" name="cmd" value="_cart"/>
-                <input type="hidden" name="upload" value="1"/>
-
-                @foreach ($cart->getInfo() as $i => $cartItem)
-                    <input type="hidden" name="item_name_{{ $i + 1 }}" value="{{ trans($cartItem['product']->getTitle()) }}"/>
-                    <input type="hidden" name="amount_{{ $i + 1 }}" value="{{ $cartItem['product']->getPrice() }}"/>
-                    <input type="hidden" name="quantity_{{ $i + 1 }}" value="{{ $cartItem['qty'] }}"/>
-                @endforeach
-            @else
-                <input type="hidden" name="cmd" value="_xclick"/>
-                <input type="hidden" name="item_name" value="{{ trans($cart->getInfo()[0]['product']->getTitle()) }}"/>
-                <input type="hidden" name="amount" value="{{ $cart->getInfo()[0]['product']->getPrice() }}"/>
-                <input type="hidden" name="quantity" value="{{ $cart->getInfo()[0]['qty'] }}"/>
-            @endif
+            @foreach ($cart->getInfo() as $i => $cartItem)
+                <input type="hidden" name="item_name_{{ $i + 1 }}" value="{{ trans($cartItem['product']->getTitle()) }}"/>
+                <input type="hidden" name="item_number_{{ $i + 1 }}" value="{{ trans($cartItem['product']->getId()) }}"/>
+                <input type="hidden" name="amount_{{ $i + 1 }}" value="{{ $cartItem['product']->getPrice() }}"/>
+                <input type="hidden" name="quantity_{{ $i + 1 }}" value="{{ $cartItem['qty'] }}"/>
+            @endforeach
 
             <button type="submit">
                 <span class="cart-txt">{{ trans('page.header.checkout') }}</span>
