@@ -179,7 +179,6 @@ return [
         PingPongShop\Providers\RouteServiceProvider::class,
         PingPongShop\Providers\NavigationServiceProvider::class,
         PingPongShop\Providers\ProductServiceProvider::class,
-        PingPongShop\Providers\BraintreeServiceProvider::class,
 
     ],
 
