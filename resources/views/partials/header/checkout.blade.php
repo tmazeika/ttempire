@@ -8,14 +8,18 @@
             <input type="hidden" name="no_shipping" value="2"/>
             <input type="hidden" name="cancel_return" value="{{ url('/shop') }}"/>
             <input type="hidden" name="notify_url" value="{{ url('/shop/ppipn') }}"/>
-            <input type="hidden" name="custom" value="{{ session()->getId() }}"/>
             <input type="hidden" name="shipping" value="0"/>
             <input type="hidden" name="tax" value="0"/>
 
             @foreach ($cart->getInfo() as $i => $cartItem)
-                <input type="hidden" name="item_name_{{ $i + 1 }}" value="{{ trans($cartItem['product']->getTitle()) }}"/>
-                <input type="hidden" name="item_number_{{ $i + 1 }}" value="{{ trans($cartItem['product']->getId()) }}"/>
-                <input type="hidden" name="amount_{{ $i + 1 }}" value="{{ $cartItem['product']->getPrice() }}"/>
+                @php
+                    /** @var \PingPongShop\Product $product */
+                    $product = $cartItem['product']
+                @endphp
+
+                <input type="hidden" name="item_name_{{ $i + 1 }}" value="{{ trans($product->getTitle()) }}"/>
+                <input type="hidden" name="item_number_{{ $i + 1 }}" value="{{ trans($product->getId()) }}"/>
+                <input type="hidden" name="amount_{{ $i + 1 }}" value="{{ $product->getPrice() }}"/>
                 <input type="hidden" name="quantity_{{ $i + 1 }}" value="{{ $cartItem['qty'] }}"/>
             @endforeach
 
