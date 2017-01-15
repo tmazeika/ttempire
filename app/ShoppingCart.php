@@ -3,7 +3,9 @@
 namespace PingPongShop;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use PingPongShop\Contracts\ProductRepository;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ShoppingCart
 {
@@ -34,6 +36,7 @@ class ShoppingCart
             $this->items[$id] += $qty;
         }
 
+        $this->validateQuantity($this->items[$id]);
         $this->updateSession();
     }
 
@@ -93,6 +96,7 @@ class ShoppingCart
 
     public function set(int $id, int $qty) : void
     {
+        $this->validateQuantity($qty);
         $this->items[$id] = $qty;
         $this->updateSession();
     }
@@ -100,5 +104,12 @@ class ShoppingCart
     public function updateSession()
     {
         $this->request->session()->set(self::SESSION_KEY, $this->items);
+    }
+
+    private function validateQuantity(int $qty) : void
+    {
+        if ($qty >= 1000) {
+            throw new BadRequestHttpException('Item quantity exceeds maximum');
+        }
     }
 }

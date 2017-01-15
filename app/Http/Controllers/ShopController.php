@@ -21,7 +21,7 @@ class ShopController extends Controller
 
         $this->validate($request, [
             'id'  => 'bail|required|integer|min:0|max:'.$productRepo->getMaxProductIndex(),
-            'qty' => 'bail|required|integer|min:'.(-$cart->get($productId)),
+            'qty' => 'bail|required|integer|min:'.(-$cart->get($productId)).'|max:1',
         ]);
 
         $cart->add($productId, $request->input('qty'));
@@ -33,7 +33,7 @@ class ShopController extends Controller
     {
         $this->validate($request, [
             'id'  => 'bail|required|integer|min:0|max:'.$productRepo->getMaxProductIndex(),
-            'qty' => 'bail|required|integer|min:0',
+            'qty' => 'bail|required|integer|min:0|max:1000',
         ]);
 
         $cart->set($request->input('id'), $request->input('qty'));
