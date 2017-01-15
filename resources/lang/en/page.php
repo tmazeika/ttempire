@@ -5,11 +5,12 @@ return [
     'title' => [
         'home'    => 'Home',
         'blog'    => 'Blog',
-        'shop'    => [
-            'index'    => 'Shop',
-            'checkout' => 'Checkout'
-        ],
+        'shop'    => 'Shop',
         'contact' => 'Contact',
     ],
+
+    'header' => [
+        'checkout' => 'Checkout',
+    ]
 
 ];

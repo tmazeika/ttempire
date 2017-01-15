@@ -4,12 +4,15 @@
     <section class="shop">
         @foreach($products as $product)
             <div class="shop-product-container">
-                <button class="shop-product-cart" data-product-id="{{ $product->getId() }}">
-                    <img class="shop-product-cart-img" src="{{ asset('img/fa_shopping_cart.svg') }}" alt="Add to cart" width="32" {!! $cart->get($product->getId()) > 0 ? 'style="display:none"' : '' !!}/>
-                    <span class="shop-product-cart-txt" {!! $cart->get($product->getId()) === 0 ? 'style="display:none"' : '' !!}>
-                        {{ $cart->get($product->getId()) }}
-                    </span>
-                </button>
+                <a href="{{ qs_url('/shop/cart/add', ['id' => $product->getId(), 'qty' => 1]) }}" class="shop-product-cart">
+                    @if($cart->get($product->getId()))
+                        <span class="shop-product-cart-txt">
+                            {{ $cart->get($product->getId()) }}
+                        </span>
+                    @else
+                        <img class="shop-product-cart-img" src="{{ asset('img/fa_shopping_cart.svg') }}" alt="Add to cart" width="32"/>
+                    @endif
+                </a>
 
                 <div class="shop-product" data-product-id="{{ $product->getId() }}">
                     <img class="shop-product-img" src="{{ asset($product->getImg()) }}"/>

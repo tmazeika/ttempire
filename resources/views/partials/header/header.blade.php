@@ -15,10 +15,5 @@
 
     <div class="spacer"></div>
 
-    <div class="header-item header-item-cart" {!! $cart->getSize() === 0 ? 'style="display:none"' : '' !!}>
-        <a class="{{ $checkoutItem->isActive() ? 'active' : '' }}" href="{{ $checkoutItem->getUrl() }}">
-            <span class="cart-txt">{{ trans($checkoutItem->getTitle()) }}</span>
-            <span class="cart-size">{{ $cart->getSize() }}</span>
-        </a>
-    </div>
+    @include('partials.header.checkout')
 </header>

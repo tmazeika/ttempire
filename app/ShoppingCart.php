@@ -3,6 +3,7 @@
 namespace PingPongShop;
 
 use Illuminate\Http\Request;
+use PingPongShop\Contracts\ProductRepository;
 
 class ShoppingCart
 {
@@ -10,9 +11,10 @@ class ShoppingCart
 
     protected $items;
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, ProductRepository $products)
     {
         $this->request = $request;
+        $this->products = $products;
 
         // load from session if possible
         if ($request->session()->has(self::SESSION_KEY)) {
@@ -23,7 +25,7 @@ class ShoppingCart
         }
     }
 
-    public function add(int $id, int $qty) : int
+    public function add(int $id, int $qty) : void
     {
         if (!isset($this->items[$id])) {
             $this->items[$id] = $qty;
@@ -33,8 +35,6 @@ class ShoppingCart
         }
 
         $this->updateSession();
-
-        return $this->items[$id];
     }
 
     public function get(int $id) : int
@@ -53,12 +53,48 @@ class ShoppingCart
         return $size;
     }
 
-    public function set(int $id, int $qty) : int
+    public function getProductSize() : int
+    {
+        return sizeof($this->items);
+    }
+
+    public function getCost() : float
+    {
+        $products = $this->products->getProducts();
+        $cost = 0;
+
+        foreach ($this->items as $id => $qty)
+        {
+            /** @var Product[] $products */
+            $cost += $products[$id]->getPrice() * $qty;
+        }
+
+        return $cost;
+    }
+
+    public function getInfo() : array
+    {
+        $products = $this->products->getProducts();
+        $result = [];
+
+        foreach ($this->items as $id => $qty)
+        {
+            if ($qty) {
+                /** @var Product[] $products */
+                array_push($result, [
+                    'product' => $products[$id],
+                    'qty'     => $qty,
+                ]);
+            }
+        }
+
+        return $result;
+    }
+
+    public function set(int $id, int $qty) : void
     {
         $this->items[$id] = $qty;
         $this->updateSession();
-
-        return $qty;
     }
 
     public function updateSession()

@@ -17,10 +17,6 @@ Route::group(['prefix' => 'shop'], function() {
     Route::get('/', 'ShopController@index');
 
     Route::get('/cart/add', 'ShopController@addCartProductQty');
-    Route::get('/cart/get', 'ShopController@getCartProductQty');
     Route::get('/cart/set', 'ShopController@setCartProductQty');
     Route::get('/cart/reset', 'ShopController@resetCart');
-
-    Route::get('/checkout', 'ShopController@showCheckout');
-    Route::post('/checkout', 'ShopController@checkout');
 });

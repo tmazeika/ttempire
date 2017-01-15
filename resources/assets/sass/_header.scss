@@ -20,9 +20,13 @@
     }
   }
 
-  > a {
+  a, button {
+    background: none;
+    border: none;
     color: $dim-color;
+    cursor: pointer;
     font: $font;
+    outline: none;
     text-decoration: none;
     text-transform: lowercase;
 
