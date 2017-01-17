@@ -77,13 +77,15 @@ body {
   }
 }
 
-.header-img {
-  display: none;
+@media (max-width: 50em) {
+  .header-item:nth-child(2) {
+    margin-left: 0;
+  }
 }
 
-@media not all and (max-width: 450px) {
-  .header-img.header-img {
-    display: block;
+@media (max-width: 50em) {
+  .header-img {
+    margin-right: 0;
   }
 }
 
@@ -141,6 +143,101 @@ body {
   color: #67d4ee;
 }
 
+.main-jumbo {
+  background-image: url(/img/ball_preview_edit.jpg);
+  background-size: cover;
+}
+
+.main-jumbo-container {
+  max-width: 90em;
+  margin: 0 auto;
+}
+
+@media not all and (max-width: 50em) {
+  .main-jumbo-container {
+    height: 30em;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 50em) {
+  .main-jumbo-container {
+    padding: 1em;
+  }
+}
+
+.main-jumbo-welcome {
+  color: #fff;
+  font: 300 1.7em/1 "Rubik", sans-serif;
+  font-size: 5rem;
+  text-shadow: 0 0 5px #666;
+  text-align: center;
+}
+
+@media not all and (max-width: 50em) {
+  .main-jumbo-welcome {
+    width: 50%;
+  }
+}
+
+@media (max-width: 50em) {
+  .main-jumbo-welcome {
+    font-size: 2rem;
+  }
+}
+
+.main-jumbo-welcome-small {
+  font-size: 2rem;
+}
+
+@media (max-width: 50em) {
+  .main-jumbo-welcome-small {
+    font-size: 1rem;
+  }
+}
+
+.main-jumbo-shop {
+  text-align: center;
+}
+
+@media not all and (max-width: 50em) {
+  .main-jumbo-shop {
+    width: 50%;
+  }
+}
+
+.main-jumbo-shop-btn {
+  background-color: #22c0e7;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font: 300 1.7em/1 "Rubik", sans-serif;
+  font-size: 2rem;
+  outline: none;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  padding: 1rem;
+}
+
+.main-jumbo-shop-btn:hover {
+  background-color: #39c7e9;
+}
+
+.main-jumbo-shop-btn:active {
+  background-color: #50cdec;
+}
+
+@media (max-width: 50em) {
+  .main-jumbo-shop-btn {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
 .shop-product-container {
   max-width: 70em;
   margin: 0 1em 1em 1em;
@@ -179,6 +276,7 @@ body {
 
 @media (max-width: 50em) {
   .shop-product-cart {
+    width: 30px;
     height: 30px;
     top: 0.25em;
     left: 0.25em;
@@ -198,10 +296,16 @@ body {
 .shop-product-cart-txt {
   color: #334;
   font: 300 1.7em/1 "Rubik", sans-serif;
-  width: 50px;
   display: block;
   line-height: 50px;
   text-align: center;
+}
+
+@media (max-width: 50em) {
+  .shop-product-cart-txt {
+    font-size: 1em;
+    line-height: 30px;
+  }
 }
 
 .shop-product-desc {
@@ -354,6 +458,41 @@ body {
 @media not all and (max-width: 71em) {
   .shop-product-action-item.sub.long {
     display: block;
+  }
+}
+
+.contact {
+  margin: auto;
+}
+
+.contact-card {
+  background-color: #22c0e7;
+  border-radius: 5px;
+  color: #fff;
+  font: 300 1.7em/1 "Rubik", sans-serif;
+  font-size: 2rem;
+  max-width: 20em;
+  margin: 1em auto;
+  padding: 1em;
+  line-height: 1.6;
+}
+
+@media (max-width: 50em) {
+  .contact-card {
+    font-size: 1rem;
+  }
+}
+
+.contact-item-title {
+  color: #fff;
+  font: 300 1.7em/1 "Rubik", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 50em) {
+  .contact-item-title {
+    font-size: 1rem;
   }
 }
 

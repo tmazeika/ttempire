@@ -1,0 +1,31 @@
+.contact {
+  margin: auto;
+}
+
+.contact-card {
+  background-color: $accent-color;
+  border-radius: 5px;
+  color: #fff;
+  font: $font;
+  font-size: 2rem;
+
+  max-width: 20em;
+  margin: 1em auto;
+  padding: 1em;
+  line-height: 1.6;
+
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+.contact-item-title {
+  color: #fff;
+  font: $font;
+  font-size: 2rem;
+  font-weight: bold;
+
+  @include mobile {
+    font-size: 1rem;
+  }
+}

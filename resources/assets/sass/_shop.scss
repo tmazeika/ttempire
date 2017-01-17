@@ -19,6 +19,7 @@ $first-shop-breakpoint: $content-width + 1;
 }
 
 $cart-btn-size: 50px;
+$mobile-cart-btn-size: 30px;
 
 .shop-product-cart {
   $margin: 8px;
@@ -50,15 +51,15 @@ $cart-btn-size: 50px;
   @include shop-product-cart-img($cart-btn-size, $margin, $border-width);
 
   @include mobile {
-    $cart-btn-size: 30px;
-    $margin: 4px;
+    $mobile-margin: 4px;
 
-    height: $cart-btn-size;
+    width: $mobile-cart-btn-size;
+    height: $mobile-cart-btn-size;
 
     top: 0.25em;
     left: 0.25em;
 
-    @include shop-product-cart-img($cart-btn-size, $margin, $border-width);
+    @include shop-product-cart-img($mobile-cart-btn-size, $mobile-margin, $border-width);
   }
 
   &:hover {
@@ -72,10 +73,15 @@ $cart-btn-size: 50px;
   color: $dark-color;
   font: $font;
 
-  width: $cart-btn-size;
   display: block;
   line-height: $cart-btn-size;
   text-align: center;
+
+  @include mobile {
+    font-size: 1em;
+
+    line-height: $mobile-cart-btn-size;
+  }
 }
 
 .shop-product-desc {
