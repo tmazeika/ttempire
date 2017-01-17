@@ -472,7 +472,7 @@ body {
   font: 300 1.7em/1 "Rubik", sans-serif;
   font-size: 2rem;
   max-width: 20em;
-  margin: 1em auto;
+  margin: 0 auto 1em auto;
   padding: 1em;
   line-height: 1.6;
 }
