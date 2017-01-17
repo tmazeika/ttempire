@@ -25,7 +25,7 @@
                     <div class="spacer"></div>
 
                     <div class="shop-product-action">
-                        <div class="shop-product-action-item">${{ $product->getPrice() }}</div>
+                        <div class="shop-product-action-item">@lang('currency.price', ['amount' => $product->getPrice()])</div>
                         <sub class="shop-product-action-item sub long" hidden>{{ $product->getQtyInc() }} per box</sub>
                         <sub class="shop-product-action-item sub short" hidden>{{ $product->getQtyInc() }}/box</sub>
                     </div>

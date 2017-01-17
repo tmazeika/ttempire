@@ -11,6 +11,6 @@ return [
 
     'header' => [
         'checkout' => 'Checkout',
-    ]
+    ],
 
 ];

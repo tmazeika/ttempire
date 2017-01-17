@@ -38,7 +38,7 @@ class Product
 
     public function getPrice() : float
     {
-        return $this->price;
+        return CurrencyConverter::convert('USD', trans('currency.code'), $this->price);
     }
 
     public function getQtyInc() : int
