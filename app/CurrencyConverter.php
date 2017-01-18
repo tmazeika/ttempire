@@ -25,6 +25,6 @@ class CurrencyConverter
             });
         }
 
-        return round($amount * $rate, 5);
+        return round($amount * $rate);
     }
 }
