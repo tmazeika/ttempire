@@ -1,9 +1,9 @@
 @if($cart->getSize())
     <div class="header-item header-item-cart">
-        <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+        <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
             <input type="hidden" name="cmd" value="_cart"/>
             <input type="hidden" name="upload" value="1"/>
-            <input type="hidden" name="business" value="GFLBCKL9RDD44"/>
+            <input type="hidden" name="business" value="YUT9HLMT35XQ2"/>
             <input type="hidden" name="image_url" value="{{ asset('img/logo_ppbanner.png') }}"/>
             <input type="hidden" name="no_shipping" value="2"/>
             <input type="hidden" name="cancel_return" value="{{ url('/shop') }}"/>
