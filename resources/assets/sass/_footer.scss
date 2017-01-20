@@ -27,4 +27,20 @@
       color: lighten($accent-color, 15%);
     }
   }
+
+  &:not(:last-child) {
+    margin-right: 1em;
+  }
+}
+
+.footer-item-link {
+  padding: 0 0.5em;
+
+  &:last-child {
+    margin-right: 0.5em;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
 }
