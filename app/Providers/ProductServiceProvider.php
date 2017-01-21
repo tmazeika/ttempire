@@ -5,6 +5,7 @@ namespace PingPongShop\Providers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
 use PingPongShop\Contracts\ProductRepository;
+use PingPongShop\CurrencyConverter;
 use PingPongShop\Repositories\ProductRepositoryImpl;
 
 class ProductServiceProvider extends ServiceProvider
@@ -15,6 +16,10 @@ class ProductServiceProvider extends ServiceProvider
             $products = $productRepo->getProducts();
 
             $view->with('products', $products);
+        });
+
+        view()->composer('*', function(View $view) {
+            $view->with('shippingCost', CurrencyConverter::convert('USD', trans('currency.code'), 6));
         });
     }
 

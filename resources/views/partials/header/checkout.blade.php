@@ -3,13 +3,13 @@
         <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
             <input type="hidden" name="cmd" value="_cart"/>
             <input type="hidden" name="upload" value="1"/>
-            <input type="hidden" name="business" value="YUT9HLMT35XQ2"/>
+            <input type="hidden" name="business" value="{{ env('PAYPAL_BUSINESS') }}"/>
             <input type="hidden" name="image_url" value="{{ asset('img/logo_ppbanner.png') }}"/>
             <input type="hidden" name="no_shipping" value="2"/>
             <input type="hidden" name="cancel_return" value="{{ url('/shop') }}"/>
             <input type="hidden" name="notify_url" value="{{ url('/shop/ppipn') }}"/>
             <input type="hidden" name="currency_code" value="{{ trans('currency.code') }}"/>
-            <input type="hidden" name="shipping" value="0"/>
+            <input type="hidden" name="shipping" value="{{ $shippingCost }}"/>
             <input type="hidden" name="tax" value="0"/>
 
             @foreach ($cart->getInfo() as $i => $cartItem)
