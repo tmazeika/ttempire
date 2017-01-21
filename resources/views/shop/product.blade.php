@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="shop-product-prev">
-        <a class="shop-product-prev-back-link" href="{{ url('/shop') }}">&leftarrow; Back</a>
+        <a class="shop-product-prev-back-link" href="{{ url('/shop') }}">&leftarrow; Back to Shop</a>
 
         <div class="shop-product-prev-header">
             <img class="shop-product-prev-img" src="{{ asset($product->getImg()) }}"/>
