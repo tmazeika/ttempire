@@ -12,7 +12,7 @@ class ProductServiceProvider extends ServiceProvider
 {
     public function boot(ProductRepository $productRepo)
     {
-        view()->composer('shop', function(View $view) use ($productRepo) {
+        view()->composer('shop.*', function(View $view) use ($productRepo) {
             $products = $productRepo->getProducts();
 
             $view->with('products', $products);

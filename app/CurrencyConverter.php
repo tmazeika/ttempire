@@ -8,7 +8,7 @@ class CurrencyConverter
 {
     const RATE_CACHE_MINUTES = 60;
 
-    public static function convert(string $from, string $to, float $amount)
+    public static function convert(string $from, string $to, float $amount, int $precision = 0)
     {
         $rate = 1;
 
@@ -25,6 +25,6 @@ class CurrencyConverter
             });
         }
 
-        return round($amount * $rate);
+        return round($amount * $rate, $precision);
     }
 }

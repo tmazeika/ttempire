@@ -4,6 +4,7 @@ namespace PingPongShop;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use PingPongShop\Contracts\ProductRepository;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
@@ -27,52 +28,37 @@ class ShoppingCart
         }
     }
 
-    public function add(int $id, int $qty) : void
+    public function add(int $id, int $qty, int $num) : void
     {
-        if (!isset($this->items[$id])) {
-            $this->items[$id] = $qty;
+        if (isset($this->items[$id][$qty])) {
+            $this->items[$id][$qty] += $num;
         }
         else {
-            $this->items[$id] += $qty;
+            $this->items[$id][$qty] = $num;
         }
 
-        $this->validateQuantity($this->items[$id]);
+        $this->validateQuantity($this->items[$id][$qty]);
         $this->updateSession();
     }
 
-    public function get(int $id) : int
+    public function get(int $id, int $qty) : int
     {
-        return isset($this->items[$id]) ? $this->items[$id] : 0;
-    }
-
-    public function getSize() : int
-    {
-        $size = 0;
-
-        foreach ($this->items as $qty) {
-            $size += $qty;
-        }
-
-        return $size;
+        return isset($this->items[$id][$qty]) ? $this->items[$id][$qty] : 0;
     }
 
     public function getProductSize() : int
     {
-        return sizeof($this->items);
-    }
+        $num = 0;
 
-    public function getCost() : float
-    {
-        $products = $this->products->getProducts();
-        $cost = 0;
-
-        foreach ($this->items as $id => $qty)
-        {
-            /** @var Product[] $products */
-            $cost += $products[$id]->getPrice() * $qty;
+        foreach ($this->items as $id => $qty) {
+            if ($qty) {
+                foreach ($qty as $qtyId => $qtyNum) {
+                    $num += $qtyNum;
+                }
+            }
         }
 
-        return $cost;
+        return $num;
     }
 
     public function getInfo() : array
@@ -82,22 +68,32 @@ class ShoppingCart
 
         foreach ($this->items as $id => $qty)
         {
-            if ($qty) {
-                /** @var Product[] $products */
-                array_push($result, [
-                    'product' => $products[$id],
-                    'qty'     => $qty,
-                ]);
+            /** @var Product $product */
+            $product = $products[$id];
+
+            $p = [
+                'product' => $product,
+            ];
+
+            foreach ($qty as $qtyId => $qtyNum) {
+                if ($qtyNum) {
+                    $p['qty'][$qtyId]['num'] = $qtyNum;
+                    $p['qty'][$qtyId]['price'] = CurrencyConverter::convert('EUR', trans('currency.code'), $product->getQuantities()[$qtyId]->getPricePerBox(), 2);
+                }
+            }
+
+            if (isset($p['qty'])) {
+                array_push($result, $p);
             }
         }
 
         return $result;
     }
 
-    public function set(int $id, int $qty) : void
+    public function set(int $id, int $qty, int $num) : void
     {
         $this->validateQuantity($qty);
-        $this->items[$id] = $qty;
+        $this->items[$id][$qty] = $num;
         $this->updateSession();
     }
 

@@ -6,14 +6,12 @@ class Product
 {
     private $id;
 
-    public function __construct(string $title, string $desc, string $img, float $price, int $qtyInc, ProductDiscount ...$discounts)
+    public function __construct(string $title, string $desc, string $img, ProductQuantity ...$quantities)
     {
         $this->title = $title;
         $this->desc = $desc;
         $this->img = $img;
-        $this->price = $price;
-        $this->qtyInc = $qtyInc;
-        $this->discounts = $discounts;
+        $this->quantities = $quantities;
     }
 
     public function getId() : int
@@ -36,19 +34,9 @@ class Product
         return $this->img;
     }
 
-    public function getPrice() : float
+    public function getQuantities() : array
     {
-        return CurrencyConverter::convert('USD', trans('currency.code'), $this->price);
-    }
-
-    public function getQtyInc() : int
-    {
-        return $this->qtyInc;
-    }
-
-    public function getDiscounts() : array
-    {
-        return $this->discounts;
+        return $this->quantities;
     }
 
     public function setId(int $id)

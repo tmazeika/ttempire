@@ -11,6 +11,10 @@ $first-shop-breakpoint: $content-width + 1;
   position: relative;
 }
 
+.shop-product-link-container {
+  text-decoration: none;
+}
+
 @mixin shop-product-cart-img($size, $margin, $border-width) {
   img {
     width: #{$size - $margin * 2 - $border-width * 2};
@@ -110,6 +114,8 @@ $mobile-cart-btn-size: 30px;
 @mixin shop-product-child($bg-color, $polygon, $opp-color) {
   background-color: $bg-color;
 
+  transition: background-color 0.2s;
+
   @include desktop {
     clip-path: $polygon;
   }
@@ -117,6 +123,10 @@ $mobile-cart-btn-size: 30px;
   .shop-product-desc::before {
     color: $opp-color;
     content: '> ';
+  }
+
+  &:hover {
+    background-color: lighten($bg-color, 5%);
   }
 }
 
@@ -199,4 +209,97 @@ $mobile-cart-btn-size: 30px;
 
     @include breakpoint-visibility($first-shop-breakpoint, '.short', '.long');
   }
+}
+
+.shop-product-prev {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.shop-product-prev-back-link {
+  color: $accent-color;
+  font: $font;
+  font-size: 1em;
+  text-decoration: none;
+
+  transition: 0.2s;
+
+  &:hover {
+    color: lighten($accent-color, 10%);
+  }
+}
+
+.shop-product-prev-header {
+  background-color: #334;
+  border-radius: 999px;
+
+  margin-top: 1em;
+  padding: 2em;
+
+  // flex
+  display: flex;
+  align-items: center;
+}
+
+.shop-product-prev-img {
+  width: 15em;
+  margin-right: 2em;
+}
+
+.shop-product-prev-title {
+  color: #fff;
+  font: $font;
+  font-size: 2em;
+
+  @include mobile {
+    font-size: 0.75em;
+  }
+}
+.shop-product-prev-table {
+  border-spacing: 0;
+
+  margin: 2em auto 4em auto;
+
+  td {
+    border-bottom: 1px solid #667;
+    font: $font;
+    font-size: 1.5em;
+
+    padding: 1em;
+  }
+
+  thead td {
+    font-weight: bold;
+  }
+}
+
+.shop-product-prev-qty-btn {
+  background-color: #ddd;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+
+  transition: background-color 0.2s;
+
+  height: 100%;
+
+  &:hover {
+    background-color: #ccc;
+  }
+}
+
+.shop-product-prev-qty-btn, .shop-product-prev-qty-btn-txt {
+  color: #223;
+  font: $font;
+  font-size: 1em;
+}
+
+.shop-product-prev-qty-btn-txt {
+  min-width: 1em;
+  display: inline-block;
+  text-align: center;
+}
+
+.shop-product-prev-qty-cart-link {
+  text-decoration: none;
 }

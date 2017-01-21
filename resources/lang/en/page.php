@@ -5,7 +5,9 @@ return [
     'title' => [
         'home'    => 'Home',
         'blog'    => 'Blog',
-        'shop'    => 'Shop',
+        'shop'    => [
+            'index' => 'Shop',
+        ],
         'contact' => 'Contact',
     ],
 

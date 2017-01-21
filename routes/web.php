@@ -24,6 +24,7 @@ Route::group([
 
     Route::group(['prefix' => 'shop'], function() {
         Route::get('/', 'ShopController@index');
+        Route::get('/{id}', 'ShopController@showProduct');
 
         Route::get('/cart/add', 'ShopController@addCartProductQty');
         Route::get('/cart/set', 'ShopController@setCartProductQty');

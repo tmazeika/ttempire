@@ -5,6 +5,7 @@ namespace PingPongShop\Repositories;
 use PingPongShop\Contracts\ProductRepository;
 use PingPongShop\Product;
 use PingPongShop\ProductDiscount;
+use PingPongShop\ProductQuantity;
 
 class ProductRepositoryImpl implements ProductRepository
 {
@@ -13,10 +14,17 @@ class ProductRepositoryImpl implements ProductRepository
     public function __construct()
     {
         $this->products = [
-            new Product('products.1star.title', 'products.1star.desc', 'img/product_1star.svg', 195, 500),
+            new Product('products.1star.title', 'products.1star.desc', 'img/product_1star.svg',
+                new ProductQuantity(100, 0.39),
+                new ProductQuantity(500, 0.38),
+                new ProductQuantity(1000, 0.37),
+                new ProductQuantity(1500, 0.35)
+            ),
 
-            new Product('products.3star.title', 'products.3star.desc', 'img/product_3star.svg', 294, 300,
-                new ProductDiscount(3, 60)),
+            new Product('products.3star.title', 'products.3star.desc', 'img/product_3star.svg',
+                new ProductQuantity(120, 1),
+                new ProductQuantity(300, 0.98)
+            ),
         ];
 
         foreach ($this->products as $i => $product) {
@@ -33,4 +41,10 @@ class ProductRepositoryImpl implements ProductRepository
     {
         return count($this->products);
     }
+
+    function getMaxProductQuantityIndex(int $productId) : int
+    {
+        return sizeof($this->products[$productId]->getQuantities()) - 1;
+    }
+
 }

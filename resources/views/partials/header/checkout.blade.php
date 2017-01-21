@@ -1,6 +1,6 @@
-@if($cart->getSize())
+@if($cart->getProductSize())
     <div class="header-item header-item-cart">
-        <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
+        <form method="post" action="{{ env('PAYPAL_URL') }}">
             <input type="hidden" name="cmd" value="_cart"/>
             <input type="hidden" name="upload" value="1"/>
             <input type="hidden" name="business" value="{{ env('PAYPAL_BUSINESS') }}"/>
@@ -12,21 +12,22 @@
             <input type="hidden" name="shipping" value="{{ $shippingCost }}"/>
             <input type="hidden" name="tax" value="0"/>
 
-            @foreach ($cart->getInfo() as $i => $cartItem)
-                @php
-                    /** @var \PingPongShop\Product $product */
-                    $product = $cartItem['product']
-                @endphp
+            @php
+                $i = 0;
+            @endphp
 
-                <input type="hidden" name="item_name_{{ $i + 1 }}" value="{{ trans($product->getTitle()) }}"/>
-                <input type="hidden" name="item_number_{{ $i + 1 }}" value="{{ trans($product->getId()) }}"/>
-                <input type="hidden" name="amount_{{ $i + 1 }}" value="{{ $product->getPrice() }}"/>
-                <input type="hidden" name="quantity_{{ $i + 1 }}" value="{{ $cartItem['qty'] }}"/>
+            @foreach($cart->getInfo() as $cartItemI => $cartItem)
+                @foreach($cartItem['qty'] as $qtyId => $qty)
+                    <input type="hidden" name="item_name_{{ ++$i }}" value="{{ trans($cartItem['product']->getTitle()) }} (box of {{ $cartItem['product']->getQuantities()[$qtyId]->getQty() }})"/>
+                    <input type="hidden" name="item_number_{{ $i }}" value="{{ $cartItem['product']->getId() }}-{{ $qtyId }}"/>
+                    <input type="hidden" name="amount_{{ $i }}" value="{{ $qty['price'] }}"/>
+                    <input type="hidden" name="quantity_{{ $i }}" value="{{ $qty['num'] }}"/>
+                @endforeach
             @endforeach
 
             <button type="submit">
                 <span class="cart-txt">{{ trans('page.header.checkout') }}</span>
-                <span class="cart-size">{{ $cart->getSize() }}</span>
+                <span class="cart-size">{{ $cart->getProductSize() }}</span>
             </button>
         </form>
     </div>
