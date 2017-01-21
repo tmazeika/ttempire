@@ -15,7 +15,7 @@
                     <tr>
                         <td>Balls Per Box</td>
                         <td>Price Per Box</td>
-                        <td>Price Per Ball</td>
+                        <td>Price Per Ball*</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -38,6 +38,8 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <span class="shop-product-prev-qty-note">* not exact for USD</span>
         </div>
     </section>
 @endsection

@@ -255,10 +255,21 @@ $mobile-cart-btn-size: 30px;
     font-size: 0.75em;
   }
 }
+
+.shop-product-prev-qty-container {
+  margin-bottom: 2em;
+}
+
+.shop-product-prev-qty-note {
+  color: #667;
+  font: $font;
+  font-size: 0.75em;
+}
+
 .shop-product-prev-table {
   border-spacing: 0;
 
-  margin: 2em auto 4em auto;
+  margin: 2em auto;
 
   td {
     border-bottom: 1px solid #667;

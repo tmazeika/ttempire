@@ -543,9 +543,19 @@ body {
   }
 }
 
+.shop-product-prev-qty-container {
+  margin-bottom: 2em;
+}
+
+.shop-product-prev-qty-note {
+  color: #667;
+  font: 300 1.7em/1 "Rubik", sans-serif;
+  font-size: 0.75em;
+}
+
 .shop-product-prev-table {
   border-spacing: 0;
-  margin: 2em auto 4em auto;
+  margin: 2em auto;
 }
 
 .shop-product-prev-table td {
