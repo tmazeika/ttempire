@@ -159,6 +159,10 @@ body {
   font-weight: bold;
 }
 
+.footer-lang > *:nth-child(even) {
+  margin-right: 0.75em;
+}
+
 .main-jumbo {
   background-image: url(/img/ball_preview_edit.jpg);
   background-size: cover;

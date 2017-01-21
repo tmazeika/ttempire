@@ -44,3 +44,7 @@
     font-weight: bold;
   }
 }
+
+.footer-lang > *:nth-child(even) {
+  margin-right: 0.75em;
+}
