@@ -19,7 +19,7 @@ class ProductServiceProvider extends ServiceProvider
         });
 
         view()->composer('*', function(View $view) {
-            $view->with('shippingCost', CurrencyConverter::convert('USD', trans('currency.code'), 6));
+            $view->with('shippingCost', CurrencyConverter::convert('USD', trans('currency.code'), 6, 2));
         });
     }
 
