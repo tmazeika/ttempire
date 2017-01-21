@@ -9,7 +9,7 @@
             <input type="hidden" name="cancel_return" value="{{ url('/shop') }}"/>
             <input type="hidden" name="notify_url" value="{{ url('/shop/ppipn') }}"/>
             <input type="hidden" name="currency_code" value="{{ trans('currency.code') }}"/>
-            <input type="hidden" name="shipping" value="{{ $shippingCost }}"/>
+            <input type="hidden" name="shipping_1" value="{{ $shippingCost }}"/>
             <input type="hidden" name="tax" value="0"/>
 
             @php
