@@ -15,5 +15,12 @@
 
     <div class="spacer"></div>
 
+    <div class="header-item ignore-casing header-lang">
+        <img src="{{ asset('/img/flag_usd.svg') }}" width="35px"/>
+        <a class="{{ LaravelLocalization::getCurrentLocale() === 'en-US' ? 'active' : '' }}" href="{{ LaravelLocalization::getLocalizedURL('en-US') }}">USD</a>
+        <img src="{{ asset('/img/flag_eur.svg') }}" width="35px"/>
+        <a class="{{ LaravelLocalization::getCurrentLocale() === 'en-GB' ? 'active' : '' }}" href="{{ LaravelLocalization::getLocalizedURL('en-GB') }}">EUR</a>
+    </div>
+
     @include('partials.header.checkout')
 </header>

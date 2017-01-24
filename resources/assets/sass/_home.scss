@@ -32,7 +32,7 @@
     width: 50%;
   }
 
-  @include mobile {
+  @include breakpoint-lte(60em) {
     font-size: 2rem;
   }
 }
@@ -40,7 +40,7 @@
 .main-jumbo-welcome-small {
   font-size: 2rem;
 
-  @include mobile {
+  @include breakpoint-lte(60em) {
     font-size: 1rem;
   }
 }

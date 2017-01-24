@@ -3,12 +3,11 @@ $first-shop-breakpoint: $content-width + 1;
 .shop-product-container {
   max-width: 70em;
   margin: 0 1em 1em 1em;
+  position: relative;
 
   @include breakpoint-outside($mobile-desktop-breakpoint, $first-shop-breakpoint) {
     margin: 0 auto 1em auto;
   }
-
-  position: relative;
 }
 
 .shop-product-link-container {
@@ -224,6 +223,8 @@ $mobile-cart-btn-size: 30px;
 
   transition: 0.2s;
 
+  margin-left: 1em;
+
   &:hover {
     color: lighten($accent-color, 10%);
   }
@@ -233,26 +234,37 @@ $mobile-cart-btn-size: 30px;
   background-color: #334;
   border-radius: 999px;
 
-  margin-top: 1em;
+  max-width: 90%;
+  margin: 1em auto 0 auto;
   padding: 2em;
 
   // flex
   display: flex;
   align-items: center;
+
+  @include mobile {
+    padding: 1em;
+  }
 }
 
 .shop-product-prev-img {
   width: 15em;
   margin-right: 2em;
+
+  @include mobile {
+    width: 7em;
+    margin-right: 1em;
+  }
 }
 
 .shop-product-prev-title {
   color: #fff;
   font: $font;
   font-size: 2em;
+  line-height: 1.5;
 
   @include mobile {
-    font-size: 0.75em;
+    font-size: 1.1em;
   }
 }
 
@@ -264,6 +276,8 @@ $mobile-cart-btn-size: 30px;
   color: #667;
   font: $font;
   font-size: 0.75em;
+
+  margin-left: 1em;
 }
 
 .shop-product-prev-table {
@@ -277,6 +291,10 @@ $mobile-cart-btn-size: 30px;
     font-size: 1.5em;
 
     padding: 1em;
+
+    @include mobile {
+      font-size: 1em;
+    }
   }
 
   thead td {
@@ -309,6 +327,10 @@ $mobile-cart-btn-size: 30px;
   min-width: 1em;
   display: inline-block;
   text-align: center;
+}
+
+.shop-product-prev-qty-cart {
+  white-space: nowrap;
 }
 
 .shop-product-prev-qty-cart-link {

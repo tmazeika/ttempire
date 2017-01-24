@@ -2,10 +2,15 @@
   max-width: $content-width;
   margin: 0 auto;
   padding: 1em;
+
+  // flex
   display: flex;
+  flex-wrap: wrap;
 }
 
 .header-item {
+  text-transform: lowercase;
+
   margin: 0 1em;
 
   // flex
@@ -15,7 +20,7 @@
   @include mobile {
     margin: 0 0.5em;
 
-    img {
+    .header-img {
       width: 75%;
     }
   }
@@ -28,7 +33,6 @@
     font: $font;
     outline: none;
     text-decoration: none;
-    text-transform: lowercase;
 
     @include mobile {
       font-size: 1.25em;
@@ -57,19 +61,41 @@
 
   @include mobile {
     &:nth-child(2) {
-      margin-left: 0;
+      margin-left: 0.75em;
     }
+  }
+
+  &.ignore-casing {
+    text-transform: none;
   }
 }
 
 .header-img {
-  //@include breakpoint-visibility(450px, $max-class: '.header-img');
   @include mobile {
     margin-right: 0;
   }
 }
 
+.header-lang {
+  font-size: 60%;
+
+  > *:nth-child(odd) {
+    margin-right: 0.5em;
+  }
+
+  > *:nth-child(even) {
+    margin-right: 1em;
+  }
+
+  @include mobile {
+    margin-top: 1em;
+    order: 1;
+  }
+}
+
 .cart-txt {
+  text-transform: lowercase;
+
   display: none;
   margin-right: 0.5em;
 
