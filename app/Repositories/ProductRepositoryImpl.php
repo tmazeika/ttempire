@@ -22,6 +22,7 @@ class ProductRepositoryImpl implements ProductRepository
             ),
 
             new Product('products.3star.title', 'products.3star.desc', 'img/product_3star.svg',
+                new ProductQuantity(48, 1.08),
                 new ProductQuantity(120, 1),
                 new ProductQuantity(300, 0.98)
             ),
@@ -46,5 +47,4 @@ class ProductRepositoryImpl implements ProductRepository
     {
         return sizeof($this->products[$productId]->getQuantities()) - 1;
     }
-
 }
