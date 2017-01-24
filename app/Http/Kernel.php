@@ -1,9 +1,9 @@
 <?php
 
-namespace PingPongShop\Http;
+namespace TTEmpire\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use PingPongShop\Http\Middleware\SetCheckoutVisibility;
+use TTEmpire\Http\Middleware\SetCheckoutVisibility;
 
 class Kernel extends HttpKernel
 {
@@ -25,13 +25,13 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \PingPongShop\Http\Middleware\EncryptCookies::class,
+            \TTEmpire\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \PingPongShop\Http\Middleware\VerifyCsrfToken::class,
+            \TTEmpire\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \PingPongShop\Http\Middleware\LoadShoppingCart::class,
+            \TTEmpire\Http\Middleware\LoadShoppingCart::class,
         ],
 
         'api' => [
@@ -52,7 +52,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \PingPongShop\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \TTEmpire\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,

@@ -22,7 +22,7 @@
             "database"
         ],
         "psr-4": {
-            "PingPongShop\\": "app/"
+            "TTEmpire\\": "app/"
         },
         "files": [
             "app/helpers.php"

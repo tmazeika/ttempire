@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(PingPongShop\User::class, function (Faker\Generator $faker) {
+$factory->define(TTEmpire\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

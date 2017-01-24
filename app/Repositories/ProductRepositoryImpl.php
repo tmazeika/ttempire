@@ -1,11 +1,11 @@
 <?php
 
-namespace PingPongShop\Repositories;
+namespace TTEmpire\Repositories;
 
-use PingPongShop\Contracts\ProductRepository;
-use PingPongShop\Product;
-use PingPongShop\ProductDiscount;
-use PingPongShop\ProductQuantity;
+use TTEmpire\Contracts\ProductRepository;
+use TTEmpire\Product;
+use TTEmpire\ProductDiscount;
+use TTEmpire\ProductQuantity;
 
 class ProductRepositoryImpl implements ProductRepository
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace PingPongShop\Http\Controllers\Auth;
+namespace TTEmpire\Http\Controllers\Auth;
 
-use PingPongShop\Http\Controllers\Controller;
+use TTEmpire\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

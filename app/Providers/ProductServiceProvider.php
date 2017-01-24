@@ -1,12 +1,12 @@
 <?php
 
-namespace PingPongShop\Providers;
+namespace TTEmpire\Providers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
-use PingPongShop\Contracts\ProductRepository;
-use PingPongShop\CurrencyConverter;
-use PingPongShop\Repositories\ProductRepositoryImpl;
+use TTEmpire\Contracts\ProductRepository;
+use TTEmpire\CurrencyConverter;
+use TTEmpire\Repositories\ProductRepositoryImpl;
 
 class ProductServiceProvider extends ServiceProvider
 {

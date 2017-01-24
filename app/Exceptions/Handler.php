@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Exceptions;
+namespace TTEmpire\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

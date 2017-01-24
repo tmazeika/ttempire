@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Http\Controllers;
+namespace TTEmpire\Http\Controllers;
 
 class HomeController extends Controller
 {

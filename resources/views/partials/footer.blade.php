@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="footer-item">
-        &copy; {{ date('Y') }} Ping Pong Shop
+        &copy; {{ date('Y') }} Table Tennis Empire
     </div>
 
     <div class="spacer"></div>

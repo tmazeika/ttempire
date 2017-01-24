@@ -5,8 +5,8 @@
         <div class="main-jumbo-container">
             <div class="main-jumbo-welcome">
                 Welcome<br/>
-                <span class="main-jumbo-welcome-small">to the</span><br/>
-                Ping Pong Shop
+                <span class="main-jumbo-welcome-small">to</span><br/>
+                Table Tennis Empire
             </div>
 
             <div class="main-jumbo-shop">

@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Providers;
+namespace TTEmpire\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'PingPongShop\Model' => 'PingPongShop\Policies\ModelPolicy',
+        'TTEmpire\Model' => 'TTEmpire\Policies\ModelPolicy',
     ];
 
     /**

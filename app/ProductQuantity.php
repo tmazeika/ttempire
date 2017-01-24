@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop;
+namespace TTEmpire;
 
 class ProductQuantity
 {

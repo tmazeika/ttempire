@@ -1,9 +1,9 @@
 <?php
 
-namespace PingPongShop\Http\Controllers\Auth;
+namespace TTEmpire\Http\Controllers\Auth;
 
-use PingPongShop\User;
-use PingPongShop\Http\Controllers\Controller;
+use TTEmpire\User;
+use TTEmpire\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 

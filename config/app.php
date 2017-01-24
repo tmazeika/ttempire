@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'PingPongShop',
+    'name' => 'Table Tennis Empire',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,13 +172,13 @@ return [
         /*
          * Application Service Providers...
          */
-        PingPongShop\Providers\AppServiceProvider::class,
-        PingPongShop\Providers\AuthServiceProvider::class,
-        // PingPongShop\Providers\BroadcastServiceProvider::class,
-        PingPongShop\Providers\EventServiceProvider::class,
-        PingPongShop\Providers\RouteServiceProvider::class,
-        PingPongShop\Providers\NavigationServiceProvider::class,
-        PingPongShop\Providers\ProductServiceProvider::class,
+        TTEmpire\Providers\AppServiceProvider::class,
+        TTEmpire\Providers\AuthServiceProvider::class,
+        // TTEmpire\Providers\BroadcastServiceProvider::class,
+        TTEmpire\Providers\EventServiceProvider::class,
+        TTEmpire\Providers\RouteServiceProvider::class,
+        TTEmpire\Providers\NavigationServiceProvider::class,
+        TTEmpire\Providers\ProductServiceProvider::class,
 
     ],
 

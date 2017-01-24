@@ -1,11 +1,11 @@
 <?php
 
-namespace PingPongShop;
+namespace TTEmpire;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use PingPongShop\Contracts\ProductRepository;
+use TTEmpire\Contracts\ProductRepository;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ShoppingCart

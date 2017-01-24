@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Http\Middleware;
+namespace TTEmpire\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

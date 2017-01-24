@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'cookie' => 'pingpongshop_session',
+    'cookie' => 'ttempire_session',
 
     /*
     |--------------------------------------------------------------------------

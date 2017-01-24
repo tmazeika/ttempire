@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Providers;
+namespace TTEmpire\Providers;
 
 use Braintree_Gateway;
 use Illuminate\Support\ServiceProvider;

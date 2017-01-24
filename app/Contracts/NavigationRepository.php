@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Contracts;
+namespace TTEmpire\Contracts;
 
 interface NavigationRepository
 {

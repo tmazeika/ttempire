@@ -1,9 +1,9 @@
 <?php
 
-namespace PingPongShop\Repositories;
+namespace TTEmpire\Repositories;
 
-use PingPongShop\Contracts\NavigationRepository;
-use PingPongShop\NavigationItem;
+use TTEmpire\Contracts\NavigationRepository;
+use TTEmpire\NavigationItem;
 
 class NavigationRepositoryImpl implements NavigationRepository
 {

@@ -1,13 +1,12 @@
 <?php
 
-namespace PingPongShop\Http\Controllers;
+namespace TTEmpire\Http\Controllers;
 
 use Braintree_ClientToken;
 use Braintree_Transaction;
 use Illuminate\Http\Request;
-use PingPongShop\Contracts\ProductRepository;
-use PingPongShop\Product;
-use PingPongShop\ShoppingCart;
+use TTEmpire\Contracts\ProductRepository;
+use TTEmpire\ShoppingCart;
 
 class ShopController extends Controller
 {

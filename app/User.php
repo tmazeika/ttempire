@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop;
+namespace TTEmpire;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop;
+namespace TTEmpire;
 
 use Illuminate\Support\Facades\Cache;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace PingPongShop\Providers;
+namespace TTEmpire\Providers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
-use PingPongShop\Contracts\NavigationRepository;
-use PingPongShop\NavigationItem;
-use PingPongShop\Repositories\NavigationRepositoryImpl;
-use PingPongShop\ShoppingCart;
+use TTEmpire\Contracts\NavigationRepository;
+use TTEmpire\NavigationItem;
+use TTEmpire\Repositories\NavigationRepositoryImpl;
+use TTEmpire\ShoppingCart;
 
 class NavigationServiceProvider extends ServiceProvider
 {

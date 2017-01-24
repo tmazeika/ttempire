@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => PingPongShop\User::class,
+        'model' => TTEmpire\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

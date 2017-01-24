@@ -12,7 +12,7 @@
 
     @yield('head')
 
-    <title>{{ $title }} | Ping Pong Shop</title>
+    <title>{{ $title }} | Table Tennis Empire</title>
 </head>
 
 <body>

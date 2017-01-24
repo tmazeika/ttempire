@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Http\Middleware;
+namespace TTEmpire\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ class LoadShoppingCart
 {
     public function handle(Request $request, Closure $next)
     {
-        View::share('cart', resolve('PingPongShop\ShoppingCart'));
+        View::share('cart', resolve('TTEmpire\ShoppingCart'));
 
         return $next($request);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace PingPongShop\Providers;
+namespace TTEmpire\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
