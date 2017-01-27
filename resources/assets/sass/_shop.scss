@@ -346,7 +346,7 @@ $mobile-cart-btn-size: 30px;
   width: 5em;
 
   @include mobile {
-    width: 3em;
+    display: none;
   }
 }
 
@@ -364,6 +364,7 @@ $mobile-cart-btn-size: 30px;
 .cart-prev-table {
   border-spacing: 0;
 
+  width: 100%;
   margin: 2em auto;
 
   td {
@@ -371,7 +372,13 @@ $mobile-cart-btn-size: 30px;
     font: $font;
     font-size: 1.5em;
 
-    padding: 1em;
+    &:first-child {
+      padding: 0.25em 0 0.25em 0.25em;
+    }
+
+    &:not(:first-child) {
+      padding: 0.5em;
+    }
 
     @include mobile {
       font-size: 1em;
@@ -380,8 +387,6 @@ $mobile-cart-btn-size: 30px;
 
   thead td {
     font-weight: bold;
-
-    white-space: nowrap;
   }
 }
 
@@ -443,6 +448,16 @@ $mobile-cart-btn-size: 30px;
   &:not(:last-child) {
     margin-right: 1em;
   }
+
+  @include mobile {
+    font-size: 1rem;
+
+    line-height: 1.5;
+  }
+
+  @include breakpoint-lte($content-width) {
+    margin: 0 1em;
+  }
 }
 
 .cart-prev-action-item-title {
@@ -472,6 +487,6 @@ $mobile-cart-btn-size: 30px;
   }
 
   @include mobile {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 }
