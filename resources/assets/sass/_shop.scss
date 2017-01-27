@@ -336,3 +336,142 @@ $mobile-cart-btn-size: 30px;
 .shop-product-prev-qty-cart-link {
   text-decoration: none;
 }
+
+.cart-prev {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.cart-prev-item-img {
+  width: 5em;
+
+  @include mobile {
+    width: 3em;
+  }
+}
+
+.cart-prev-title {
+  color: #fff;
+  font: $font;
+  font-size: 2em;
+  line-height: 1.5;
+
+  @include mobile {
+    font-size: 1.1em;
+  }
+}
+
+.cart-prev-table {
+  border-spacing: 0;
+
+  margin: 2em auto;
+
+  td {
+    border-bottom: 1px solid #667;
+    font: $font;
+    font-size: 1.5em;
+
+    padding: 1em;
+
+    @include mobile {
+      font-size: 1em;
+    }
+  }
+
+  thead td {
+    font-weight: bold;
+
+    white-space: nowrap;
+  }
+}
+
+.cart-prev-qty-btn {
+  background-color: #ddd;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+
+  transition: background-color 0.2s;
+
+  height: 1em;
+
+  &:hover {
+    background-color: #ccc;
+  }
+
+  &.delete {
+    $red: #e36d76;
+
+    background-color: $red;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($red, 10%);
+    }
+  }
+}
+
+.cart-prev-qty-btn, .cart-prev-qty-txt {
+  color: #223;
+  font: $font;
+  font-size: 1em;
+}
+
+.cart-prev-qty-txt {
+  min-width: 1em;
+  display: inline-block;
+  text-align: center;
+}
+
+.cart-prev-qty-mod {
+  white-space: nowrap;
+}
+
+.cart-prev-qty-link {
+  text-decoration: none;
+}
+
+.cart-prev-action {
+  // flex
+  display: flex;
+  align-items: center;
+}
+
+.cart-prev-action-item {
+  font: $font;
+
+  &:not(:last-child) {
+    margin-right: 1em;
+  }
+}
+
+.cart-prev-action-item-title {
+  font-weight: bold;
+}
+
+.cart-prev-action-item-btn {
+  background-color: $accent-color;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font: $font;
+  font-size: 2rem;
+  outline: none;
+
+  transition: background-color 0.2s;
+
+  padding: 1rem;
+
+  &:hover {
+    background-color: lighten($accent-color, 5%);
+  }
+
+  &:active {
+    background-color: lighten($accent-color, 10%);
+  }
+
+  @include mobile {
+    font-size: 1.5rem;
+  }
+}

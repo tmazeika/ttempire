@@ -2,10 +2,9 @@
 
 namespace TTEmpire\Http\Controllers;
 
-use Braintree_ClientToken;
-use Braintree_Transaction;
 use Illuminate\Http\Request;
 use TTEmpire\Contracts\ProductRepository;
+use TTEmpire\CurrencyConverter;
 use TTEmpire\ShoppingCart;
 
 class ShopController extends Controller
@@ -21,6 +20,29 @@ class ShopController extends Controller
             parent::TITLE_KEY => trans($productRepo->getProducts()[$id]->getTitle()),
             'product' => $productRepo->getProducts()[$id],
         ]);
+    }
+
+    public function showCart(ShoppingCart $cart)
+    {
+        $total = 0;
+
+        foreach ($cart->getInfo() as $cartItemI => $cartItem) {
+            foreach ($cartItem['qty'] as $qtyId => $qty) {
+                $total += $qty['price'] * $qty['num'];
+            }
+        }
+
+        if ($cart->getProductSize()) {
+            return view('shop.cart')->with([
+                parent::TITLE_KEY => 'Cart',
+                'cartActive' => true,
+                'shippingCost' => CurrencyConverter::convert('USD', trans('currency.code'), 6, 2),
+                'total' => $total,
+            ]);
+        }
+        else {
+            return redirect('/shop');
+        }
     }
 
     public function addCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)

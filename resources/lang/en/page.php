@@ -12,6 +12,10 @@ return [
     ],
 
     'header' => [
+        'cart' => 'Cart',
+    ],
+
+    'cart' => [
         'checkout' => 'Checkout',
     ],
 

@@ -6,4 +6,7 @@ return [
 
     'price' => '€:amount',
 
+    'thousands_sep' => '.',
+    'decimal_sep' => ',',
+
 ];

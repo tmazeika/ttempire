@@ -23,8 +23,8 @@
                     @foreach($product->getQuantities() as $id => $qty)
                         <tr class="shop-product-prev-qty">
                             <td class="shop-product-prev-qty-num">{{ $qty->getQty() }}</td>
-                            <td class="shop-product-prev-qty-price">@lang('currency.price', ['amount' => $qty->getPricePerBox()])</td>
-                            <td class="shop-product-prev-qty-unit-price">@lang('currency.price', ['amount' => number_format($qty->getPricePerUnit(), 2)])</td>
+                            <td class="shop-product-prev-qty-price">@lang('currency.price', ['amount' => number_format($qty->getPricePerBox(), 2, trans('currency.decimal_sep'), trans('currency.thousands_sep'))])</td>
+                            <td class="shop-product-prev-qty-unit-price">@lang('currency.price', ['amount' => number_format($qty->getPricePerUnit(), 2, trans('currency.decimal_sep'), trans('currency.thousands_sep'))])</td>
                             <td class="shop-product-prev-qty-cart">
                                 <a class="shop-product-prev-qty-cart-link" href="{{ qs_url('/shop/cart/add', ['id' => $product->getId(), 'qty' => $id, 'num' => -1]) }}">
                                     <button class="shop-product-prev-qty-btn">-</button>

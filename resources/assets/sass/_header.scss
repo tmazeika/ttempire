@@ -25,7 +25,7 @@
     }
   }
 
-  a, button {
+  a {
     background: none;
     border: none;
     color: $dim-color;
@@ -67,6 +67,10 @@
 
   &.ignore-casing {
     text-transform: none;
+  }
+
+  &.active .cart-txt {
+    color: $accent-color;
   }
 }
 
