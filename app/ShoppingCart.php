@@ -144,7 +144,7 @@ class ShoppingCart
     {
         foreach ($this->items as $i => $item) {
             if ($item->getBoxes() === 0 && $item->getProduct()->getId() === $id && $item->getBallsPerBox() === $ballsPerBox) {
-                unset($this->items[$i]);
+                array_splice($this->items, $i, 1);
                 return;
             }
         }
