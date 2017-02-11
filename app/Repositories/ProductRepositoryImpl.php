@@ -15,7 +15,7 @@ class ProductRepositoryImpl implements ProductRepository
     {
         $this->products = [
             new Product('products.1star.title', 'products.1star.desc', 'img/product_1star.svg',
-                new ProductQuantity(100, 0.39),
+                new ProductQuantity(100, 0.40),
                 new ProductQuantity(500, 0.38),
                 new ProductQuantity(1000, 0.37),
                 new ProductQuantity(1500, 0.35)

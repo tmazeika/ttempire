@@ -36,7 +36,7 @@ class ShopController extends Controller
             return view('shop.cart')->with([
                 parent::TITLE_KEY => 'Cart',
                 'cartActive' => true,
-                'shippingCost' => CurrencyConverter::convert('USD', trans('currency.code'), 6, 2),
+                'shippingCost' => CurrencyConverter::convert('EUR', trans('currency.code'), 6, 2),
                 'total' => $total,
             ]);
         }
