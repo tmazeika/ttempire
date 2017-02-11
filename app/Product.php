@@ -6,15 +6,16 @@ class Product
 {
     private $id;
 
-    public function __construct(string $title, string $desc, string $img, ProductQuantity ...$quantities)
+    public function __construct(string $id, string $title, string $desc, string $img, ProductQuantity ...$quantities)
     {
+        $this->id = $id;
         $this->title = $title;
         $this->desc = $desc;
         $this->img = $img;
         $this->quantities = $quantities;
     }
 
-    public function getId() : int
+    public function getId(): string
     {
         return $this->id;
     }
@@ -34,13 +35,24 @@ class Product
         return $this->img;
     }
 
-    public function getQuantities() : array
+    public function getQuantities(): array
     {
         return $this->quantities;
     }
 
-    public function setId(int $id)
+    /**
+     * @param int $ballsPerBox
+     *
+     * @return ProductQuantity|null
+     */
+    public function getQuantity(int $ballsPerBox)
     {
-        $this->id = $id;
+        foreach ($this->quantities as $quantity) {
+            if ($quantity->getBallsPerBox() === $ballsPerBox) {
+                return $quantity;
+            }
+        }
+
+        return null;
     }
 }

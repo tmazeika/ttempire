@@ -155,11 +155,11 @@ $mobile-cart-btn-size: 30px;
     }
   }
 
-  &[data-product-id="0"] {
+  &[data-product-id="kingnik-1-star"] {
     @include shop-product-child($dark-color, polygon(0 0, 95% 0, 100% 100%, 5% 100%), $accent-color);
   }
 
-  &[data-product-id="1"] {
+  &[data-product-id="kingnik-3-star"] {
     @include shop-product-child($accent-color, polygon(5% 0, 100% 0, 95% 100%, 0 100%), $dark-color);
   }
 }

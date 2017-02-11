@@ -9,42 +9,48 @@ use TTEmpire\ProductQuantity;
 
 class ProductRepositoryImpl implements ProductRepository
 {
-    protected $products;
+    /** @var Product[] */
+    private $products;
 
     public function __construct()
     {
         $this->products = [
-            new Product('products.1star.title', 'products.1star.desc', 'img/product_1star.svg',
-                new ProductQuantity(100, 0.40),
-                new ProductQuantity(500, 0.38),
-                new ProductQuantity(1000, 0.37),
-                new ProductQuantity(1500, 0.35)
-            ),
+            new Product('kingnik-1-star', 'products.1star.title', 'products.1star.desc', 'img/product_1star.svg', ...[
+                new ProductQuantity(0.40, 100),
+                new ProductQuantity(0.38, 500),
+                new ProductQuantity(0.37, 1000),
+                new ProductQuantity(0.35, 1500),
+            ]),
 
-            new Product('products.3star.title', 'products.3star.desc', 'img/product_3star.svg',
-                new ProductQuantity(48, 1.08),
-                new ProductQuantity(120, 1),
-                new ProductQuantity(300, 0.98)
-            ),
+            new Product('kingnik-3-star', 'products.3star.title', 'products.3star.desc', 'img/product_3star.svg', ...[
+                new ProductQuantity(1.08, 48),
+                new ProductQuantity(1.00, 120),
+                new ProductQuantity(0.98, 300),
+            ]),
         ];
-
-        foreach ($this->products as $i => $product) {
-            $product->setId($i);
-        }
     }
 
+    /**
+     * @return Product[]
+     */
     public function getProducts(): array
     {
         return $this->products;
     }
 
-    public function getMaxProductIndex(): int
+    /**
+     * @param string $id
+     *
+     * @return Product|null
+     */
+    function getProductById(string $id)
     {
-        return count($this->products);
-    }
+        foreach ($this->products as $product) {
+            if ($product->getId() === $id) {
+                return $product;
+            }
+        }
 
-    function getMaxProductQuantityIndex(int $productId) : int
-    {
-        return sizeof($this->products[$productId]->getQuantities()) - 1;
+        return null;
     }
 }

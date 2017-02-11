@@ -20,17 +20,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($product->getQuantities() as $id => $qty)
+                    @foreach($product->getQuantities() as $quantity)
                         <tr class="shop-product-prev-qty">
-                            <td class="shop-product-prev-qty-num">{{ $qty->getQty() }}</td>
-                            <td class="shop-product-prev-qty-price">@lang('currency.price', ['amount' => number_format($qty->getPricePerBox(), 2, trans('currency.decimal_sep'), trans('currency.thousands_sep'))])</td>
-                            <td class="shop-product-prev-qty-unit-price">@lang('currency.price', ['amount' => number_format($qty->getPricePerUnit(), 2, trans('currency.decimal_sep'), trans('currency.thousands_sep'))])</td>
+                            <td class="shop-product-prev-qty-num">{{ $quantity->getBallsPerBox() }}</td>
+                            <td class="shop-product-prev-qty-price">@lang('currency.price', ['amount' => number_format($quantity->getPricePerBox(), 2, trans('currency.decimal_sep'), trans('currency.thousands_sep'))])</td>
+                            <td class="shop-product-prev-qty-unit-price">@lang('currency.price', ['amount' => number_format($quantity->getPricePerBall(), 2, trans('currency.decimal_sep'), trans('currency.thousands_sep'))])</td>
                             <td class="shop-product-prev-qty-cart">
-                                <a class="shop-product-prev-qty-cart-link" href="{{ qs_url('/shop/cart/add', ['id' => $product->getId(), 'qty' => $id, 'num' => -1]) }}">
+                                <a class="shop-product-prev-qty-cart-link" href="{{ qs_url('/shop/cart/add', ['id' => $product->getId(), 'bpb' => $quantity->getBallsPerBox(), 'boxes' => -1]) }}">
                                     <button class="shop-product-prev-qty-btn">-</button>
                                 </a>
-                                <span class="shop-product-prev-qty-btn-txt">{{ $cart->get($product->getId(), $id) }}</span>
-                                <a class="shop-product-prev-qty-cart-link" href="{{ qs_url('/shop/cart/add', ['id' => $product->getId(), 'qty' => $id, 'num' => 1]) }}">
+                                <span class="shop-product-prev-qty-btn-txt">{{ $cart->getBoxes($product->getId(), $quantity->getBallsPerBox()) }}</span>
+                                <a class="shop-product-prev-qty-cart-link" href="{{ qs_url('/shop/cart/add', ['id' => $product->getId(), 'bpb' => $quantity->getBallsPerBox(), 'boxes' => 1]) }}">
                                     <button class="shop-product-prev-qty-btn">+</button>
                                 </a>
                             </td>

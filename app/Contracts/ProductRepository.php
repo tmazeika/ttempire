@@ -2,11 +2,19 @@
 
 namespace TTEmpire\Contracts;
 
+use TTEmpire\Product;
+
 interface ProductRepository
 {
-    function getProducts() : array;
+    /**
+     * @return Product[]
+     */
+    function getProducts(): array;
 
-    function getMaxProductIndex() : int;
-
-    function getMaxProductQuantityIndex(int $productId) : int;
+    /**
+     * @param string $id
+     *
+     * @return Product|null
+     */
+    function getProductById(string $id);
 }

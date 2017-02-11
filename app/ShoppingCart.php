@@ -3,15 +3,17 @@
 namespace TTEmpire;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use TTEmpire\Contracts\ProductRepository;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ShoppingCart
 {
-    const SESSION_KEY = 'cart';
+    const SESSION_KEY   = 'cart';
+    const SHIPPING_COST = 6;
 
+    /**
+     * @var ShoppingCartItem[]
+     */
     protected $items;
 
     public function __construct(Request $request, ProductRepository $products)
@@ -28,84 +30,125 @@ class ShoppingCart
         }
     }
 
-    public function add(int $id, int $qty, int $num) : void
+    public function addBoxes(string $id, int $ballsPerBox, int $boxes): void
     {
-        if (isset($this->items[$id][$qty])) {
-            $this->items[$id][$qty] += $num;
-        }
-        else {
-            $this->items[$id][$qty] = $num;
-        }
+        $item = $this->getOrCreateItem($id, $ballsPerBox);
 
-        $this->validateQuantity($this->items[$id][$qty]);
+        $this->validateBoxes($newBoxes = $item->getBoxes() + $boxes);
+        $item->setBoxes($newBoxes);
+        $this->removeIfEmpty($id, $ballsPerBox);
         $this->updateSession();
     }
 
-    public function get(int $id, int $qty) : int
+    /**
+     * @param string $id
+     * @param int $ballsPerBox
+     *
+     * @return ShoppingCartItem|null
+     */
+    public function getItem(string $id, int $ballsPerBox)
     {
-        return isset($this->items[$id][$qty]) ? $this->items[$id][$qty] : 0;
-    }
-
-    public function getProductSize() : int
-    {
-        $num = 0;
-
-        foreach ($this->items as $id => $qty) {
-            if ($qty) {
-                foreach ($qty as $qtyId => $qtyNum) {
-                    $num += $qtyNum;
-                }
+        foreach ($this->items as $item) {
+            if ($item->getProduct()->getId() === $id && $item->getBallsPerBox() === $ballsPerBox) {
+                return $item;
             }
         }
 
-        return $num;
+        return null;
     }
 
-    public function getInfo() : array
+    public function getBoxes(string $id, int $ballsPerBox): int
     {
-        $products = $this->products->getProducts();
-        $result = [];
-
-        foreach ($this->items as $id => $qty)
-        {
-            /** @var Product $product */
-            $product = $products[$id];
-
-            $p = [
-                'product' => $product,
-            ];
-
-            foreach ($qty as $qtyId => $qtyNum) {
-                if ($qtyNum) {
-                    $p['qty'][$qtyId]['num'] = $qtyNum;
-                    $p['qty'][$qtyId]['price'] = CurrencyConverter::convert('EUR', trans('currency.code'), $product->getQuantities()[$qtyId]->getPricePerBox(), 2);
-                }
-            }
-
-            if (isset($p['qty'])) {
-                array_push($result, $p);
-            }
+        if ($item = $this->getItem($id, $ballsPerBox)) {
+            return $item->getBoxes();
         }
 
-        return $result;
+        return 0;
     }
 
-    public function set(int $id, int $qty, int $num) : void
+    public function getTotalBoxes(): int
     {
-        $this->validateQuantity($qty);
-        $this->items[$id][$qty] = $num;
+        $sum = 0;
+
+        foreach ($this->items as $item) {
+            $sum += $item->getBoxes();
+        }
+
+        return $sum;
+    }
+
+    public function getTotalCost(): float
+    {
+        $sum = 0;
+
+        foreach ($this->items as $item) {
+            $sum += $item->getQuantity()->getPricePerBox() * $item->getBoxes();
+        }
+
+        return $sum + $this->getShippingCost();
+    }
+
+    public function getShippingCost(): float
+    {
+        return self::SHIPPING_COST;
+    }
+
+    /**
+     * @return ShoppingCartItem[]
+     */
+    public function getItems(): array
+    {
+        return $this->items;
+    }
+
+    public function setBoxes(string $id, int $ballsPerBox, int $boxes): void
+    {
+        $item = $this->getOrCreateItem($id, $ballsPerBox);
+
+        $this->validateBoxes($boxes);
+        $item->setBoxes($boxes);
+        $this->removeIfEmpty($id, $ballsPerBox);
         $this->updateSession();
     }
 
-    public function updateSession()
+    private function updateSession(): void
     {
         $this->request->session()->set(self::SESSION_KEY, $this->items);
     }
 
-    private function validateQuantity(int $qty) : void
+    private function validateBoxes(int $boxes): void
     {
-        if ($qty >= 1000) {
-            throw new BadRequestHttpException('Item quantity exceeds maximum');
+        if ($boxes >= 1000) {
+            throw new BadRequestHttpException('Boxes count exceeds maximum');
+        }
+    }
+
+    private function getOrCreateItem(string $id, int $ballsPerBox): ShoppingCartItem
+    {
+        $item = $this->getItem($id, $ballsPerBox);
+
+        if (!$item) {
+            if (!($product = $this->products->getProductById($id))) {
+                throw new BadRequestHttpException('Invalid product ID');
+            }
+
+            if (!($quantity = $product->getQuantity($ballsPerBox))) {
+                throw new BadRequestHttpException('Invalid balls per box amount');
+            }
+
+            array_push($this->items, $item = new ShoppingCartItem($product, $ballsPerBox, 0));
+        }
+
+        return $item;
+    }
+
+    private function removeIfEmpty(string $id, int $ballsPerBox): void
+    {
+        foreach ($this->items as $i => $item) {
+            if ($item->getBoxes() === 0 && $item->getProduct()->getId() === $id && $item->getBallsPerBox() === $ballsPerBox) {
+                unset($this->items[$i]);
+                return;
+            }
         }
     }
 }

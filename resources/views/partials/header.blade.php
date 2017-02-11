@@ -22,11 +22,11 @@
         <a class="{{ LaravelLocalization::getCurrentLocale() === 'en-GB' ? 'active' : '' }}" href="{{ LaravelLocalization::getLocalizedURL('en-GB') }}">EUR</a>
     </div>
 
-    @if($cart->getProductSize())
+    @if($cart->getTotalBoxes())
         <div class="header-item header-item-cart {{ isset($cartActive) ? 'active' : '' }}">
             <a href="{{ url('/shop/cart') }}">
                 <span class="cart-txt">{{ trans('page.header.cart') }}</span>
-                <span class="cart-size">{{ $cart->getProductSize() }}</span>
+                <span class="cart-size">{{ $cart->getTotalBoxes() }}</span>
             </a>
         </div>
     @endif

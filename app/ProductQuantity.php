@@ -4,24 +4,24 @@ namespace TTEmpire;
 
 class ProductQuantity
 {
-    public function __construct(int $qty, float $ppu)
+    public function __construct(float $pricePerBall, int $ballsPerBox)
     {
-        $this->qty = $qty;
-        $this->price = $qty * $ppu;
+        $this->pricePerBall = $pricePerBall;
+        $this->ballsPerBox = $ballsPerBox;
     }
 
-    public function getQty() : int
+    public function getPricePerBall(): float
     {
-        return $this->qty;
+        return $this->pricePerBall;
     }
 
-    public function getPricePerUnit() : float
+    public function getPricePerBox(): float
     {
-        return CurrencyConverter::convert('EUR', trans('currency.code'), $this->price / $this->qty, 2);
+        return $this->pricePerBall * $this->ballsPerBox;
     }
 
-    public function getPricePerBox() : float
+    public function getBallsPerBox(): int
     {
-        return CurrencyConverter::convert('EUR', trans('currency.code'), $this->price);
+        return $this->ballsPerBox;
     }
 }

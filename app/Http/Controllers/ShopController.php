@@ -14,65 +14,54 @@ class ShopController extends Controller
         return view('shop.index')->with(parent::TITLE_KEY, trans('page.title.shop.index'));
     }
 
-    public function showProduct(ProductRepository $productRepo, int $id)
+    public function showProduct(ProductRepository $productRepo, string $id)
     {
+        $product = $productRepo->getProductById($id);
+
         return view('shop.product')->with([
-            parent::TITLE_KEY => trans($productRepo->getProducts()[$id]->getTitle()),
-            'product' => $productRepo->getProducts()[$id],
+            parent::TITLE_KEY => trans($product->getTitle()),
+            'product'         => $product,
         ]);
     }
 
     public function showCart(ShoppingCart $cart)
     {
-        $total = 0;
-
-        foreach ($cart->getInfo() as $cartItemI => $cartItem) {
-            foreach ($cartItem['qty'] as $qtyId => $qty) {
-                $total += $qty['price'] * $qty['num'];
-            }
-        }
-
-        if ($cart->getProductSize()) {
+        if ($cart->getTotalBoxes()) {
             return view('shop.cart')->with([
                 parent::TITLE_KEY => 'Cart',
-                'cartActive' => true,
-                'shippingCost' => CurrencyConverter::convert('EUR', trans('currency.code'), 6, 2),
-                'total' => $total,
+                'cartActive'      => true,
             ]);
         }
-        else {
-            return redirect('/shop');
-        }
+
+        return redirect('/shop');
     }
 
-    public function addCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)
+    public function addCartProductQty(Request $request, ShoppingCart $cart)
     {
-        $productId = $request->input('id');
-        $qty = $request->input('qty');
+        $id = $request->input('id');
+        $bpb = $request->input('bpb');
 
         $this->validate($request, [
-            'id'  => 'bail|required|integer|min:0|max:'.$productRepo->getMaxProductIndex(),
-            'qty' => 'bail|required|integer|min:0|max:'.$productRepo->getMaxProductQuantityIndex($productId),
-            'num' => 'bail|required|integer|min:'.(-$cart->get($productId, $qty)).'|max:1',
+            'id'  => 'bail|required',
+            'bpb' => 'bail|required|integer|min:0',
+            'boxes' => 'bail|required|integer|min:'.-$cart->getBoxes($id, $bpb).'|max:1',
         ]);
-
-        $cart->add($productId, $qty, $request->input('num'));
+        $cart->addBoxes($id, $bpb, $request->input('boxes'));
 
         return back();
     }
 
-    public function setCartProductQty(Request $request, ProductRepository $productRepo, ShoppingCart $cart)
+    public function setCartProductQty(Request $request, ShoppingCart $cart)
     {
-        $productId = $request->input('id');
-        $qty = $request->input('qty');
+        $id = $request->input('id');
+        $bpb = $request->input('bpb');
 
         $this->validate($request, [
-            'id'  => 'bail|required|integer|min:0|max:'.$productRepo->getMaxProductIndex(),
-            'qty' => 'bail|required|integer|min:0|max:'.$productRepo->getMaxProductQuantityIndex($productId),
-            'num' => 'bail|required|integer|min:0|max:999',
+            'id'  => 'bail|required',
+            'bpb' => 'bail|required|integer|min:0',
+            'boxes' => 'bail|required|integer|min:0|max:999',
         ]);
-
-        $cart->set($productId, $qty, $request->input('num'));
+        $cart->setBoxes($id, $bpb, $request->input('boxes'));
 
         return back();
     }

@@ -415,47 +415,47 @@ body {
   }
 }
 
-.shop-product[data-product-id="0"] {
+.shop-product[data-product-id="kingnik-1-star"] {
   background-color: #334;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
 @media not all and (max-width: 50em) {
-  .shop-product[data-product-id="0"] {
+  .shop-product[data-product-id="kingnik-1-star"] {
     -webkit-clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
     clip-path: polygon(0 0, 95% 0, 100% 100%, 5% 100%);
   }
 }
 
-.shop-product[data-product-id="0"] .shop-product-desc::before {
+.shop-product[data-product-id="kingnik-1-star"] .shop-product-desc::before {
   color: #22c0e7;
   content: '> ';
 }
 
-.shop-product[data-product-id="0"]:hover {
+.shop-product[data-product-id="kingnik-1-star"]:hover {
   background-color: #3e3e53;
 }
 
-.shop-product[data-product-id="1"] {
+.shop-product[data-product-id="kingnik-3-star"] {
   background-color: #22c0e7;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
 @media not all and (max-width: 50em) {
-  .shop-product[data-product-id="1"] {
+  .shop-product[data-product-id="kingnik-3-star"] {
     -webkit-clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
     clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
   }
 }
 
-.shop-product[data-product-id="1"] .shop-product-desc::before {
+.shop-product[data-product-id="kingnik-3-star"] .shop-product-desc::before {
   color: #334;
   content: '> ';
 }
 
-.shop-product[data-product-id="1"]:hover {
+.shop-product[data-product-id="kingnik-3-star"]:hover {
   background-color: #39c7e9;
 }
 
