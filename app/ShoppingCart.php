@@ -125,9 +125,7 @@ class ShoppingCart
 
     private function getOrCreateItem(string $id, int $ballsPerBox): ShoppingCartItem
     {
-        $item = $this->getItem($id, $ballsPerBox);
-
-        if (!$item) {
+        if (!($item = $this->getItem($id, $ballsPerBox))) {
             if (!($product = $this->products->getProductById($id))) {
                 throw new BadRequestHttpException('Invalid product ID');
             }
