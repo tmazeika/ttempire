@@ -11,24 +11,6 @@
 |
 */
 
-Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => [
-        'localize',
-        'localizationRedirect',
-        'localeSessionRedirect',
-    ]
-], function() {
-    Route::get('/', 'HomeController@index');
-    Route::get('/contact', 'ContactController@index');
-
-    Route::group(['prefix' => 'shop'], function() {
-        Route::get('/', 'ShopController@index');
-        Route::get('/product/{id}', 'ShopController@showProduct');
-
-        Route::get('/cart', 'ShopController@showCart');
-        Route::get('/cart/add', 'ShopController@addCartProductQty');
-        Route::get('/cart/set', 'ShopController@setCartProductQty');
-        Route::get('/cart/reset', 'ShopController@resetCart');
-    });
+Route::get('/', function () {
+    return view('welcome');
 });

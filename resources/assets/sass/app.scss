@@ -1,12 +1,9 @@
-@import 'variables';
-@import 'media-mixins';
-@import 'global';
 
-// partials
-@import 'header';
-@import 'footer';
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-// pages
-@import 'home';
-@import 'shop';
-@import 'contact';
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";

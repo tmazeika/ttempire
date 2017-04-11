@@ -1,8 +1,7 @@
 <?php
 
-namespace TTEmpire\Providers;
+namespace App\Providers;
 
-use Braintree_Gateway;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
