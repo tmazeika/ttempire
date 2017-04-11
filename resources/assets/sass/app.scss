@@ -1,9 +1,15 @@
+@import "variables";
+
+// partials and pages
+@import "header";
+
 * {
   box-sizing: border-box;
 }
 
 body {
   background-color: #fff;
+  color: $dark-color;
 
   margin: 0;
 }

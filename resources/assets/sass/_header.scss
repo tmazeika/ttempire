@@ -1,0 +1,25 @@
+.header {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.header-nav {
+  // flex
+  display: flex;
+  align-items: center;
+}
+
+.header-nav-item {
+  color: $dim-color;
+  font: 300 2em/1 $font;
+  text-decoration: none;
+
+  transition: color $anim-time;
+
+  display: block;
+  margin: 1rem;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
