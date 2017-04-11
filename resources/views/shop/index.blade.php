@@ -6,13 +6,10 @@
 @endphp
 
 @section('content')
-    <div class="welcome">
-        <div class="welcome-text-container">
-            <div class="welcome-text">Shop</div>
+    @foreach(\TTEmpire\Product::all() as $product)
+        <div>
+            <img src="{{ $product->getImgAsset() }}" width="100"/>
+            {{ $product->title }}
         </div>
-
-        <a href="{{ url('/') }}">
-            <button class="welcome-button">Home</button>
-        </a>
-    </div>
+    @endforeach
 @endsection

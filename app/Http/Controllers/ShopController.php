@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace TTEmpire\Http\Controllers;
 
 class ShopController extends Controller
 {
