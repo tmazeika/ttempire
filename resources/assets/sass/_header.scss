@@ -29,4 +29,8 @@
   &:hover {
     color: $accent-color;
   }
+
+  &.active {
+    color: $accent-color;
+  }
 }

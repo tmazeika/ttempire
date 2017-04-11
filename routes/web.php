@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('shop', 'ShopController@index');
+
+Route::get('contact', function () {
+    return view('contact');
+});

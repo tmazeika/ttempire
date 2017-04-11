@@ -1,0 +1,19 @@
+.contact-container {
+  background-color: $accent-color;
+  border: 1px solid darken($accent-color, 10%);
+  border-radius: 5px;
+  color: #fff;
+
+  max-width: 30em;
+  margin: 1em auto;
+  padding: 2em;
+}
+
+.contact-heading {
+  font: 400 2rem/1 $font;
+  margin: 0 0 1rem 0;
+}
+
+.contact-info {
+  font: 300 1.5em/1 $font;
+}
