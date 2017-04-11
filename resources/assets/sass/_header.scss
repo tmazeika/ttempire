@@ -1,6 +1,5 @@
 .header {
-  max-width: $content-width;
-  margin: 0 auto;
+  @include content-container;
 }
 
 .header-nav {
@@ -18,6 +17,14 @@
 
   display: block;
   margin: 1rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &:hover {
     color: $accent-color;

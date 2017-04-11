@@ -1,7 +1,9 @@
 @import "variables";
+@import "helpers";
 
 // partials and pages
 @import "header";
+@import "footer";
 
 * {
   box-sizing: border-box;

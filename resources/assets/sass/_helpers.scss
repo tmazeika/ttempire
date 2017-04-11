@@ -1,0 +1,15 @@
+@mixin content-container {
+  max-width: $content-width;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left: 1em;
+    right: 1em;
+  }
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}

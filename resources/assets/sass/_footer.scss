@@ -1,0 +1,20 @@
+.footer {
+  @include content-container;
+
+  // flex
+  display: flex;
+}
+
+.footer-item {
+  color: $dim-color;
+  font: 300 1em/1 $font;
+
+  a {
+    color: $accent-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
