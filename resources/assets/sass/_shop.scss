@@ -1,0 +1,49 @@
+$product-width: 200px;
+
+.products-container {
+  @include content-container;
+
+  // flex
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  width: $product-width;
+  margin: 3em;
+}
+
+.product-img {
+  border-radius: 20px;
+
+  width: $product-width;
+}
+
+.product-title {
+  margin: 1em 0;
+
+  a {
+    color: $accent-color;
+    font: 400 1.5em/1 $font;
+    text-decoration: none;
+
+    transition: color $anim-time;
+
+    &:hover {
+      color: lighten($accent-color, 15%);
+    }
+  }
+}
+
+.product-description {
+  color: $dim-color;
+  font: 300 1em/1 $font;
+
+  margin: 1em 0;
+}
+
+.product-price {
+  color: $dim-color;
+  font: 400 1em/1 $font;
+}

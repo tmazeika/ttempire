@@ -20,4 +20,19 @@ class Product extends Model
     {
         return asset("img/$this->id.jpg");
     }
+
+    public function getLowestSubQuantityPrice()
+    {
+        return $this->subQuantities->sortBy('usd_price')->first()->usd_price;
+    }
+
+    public function getOnlySubQuantityPrice()
+    {
+        return $this->subQuantities->first()->usd_price;
+    }
+
+    public function hasMultipleSubQuantities()
+    {
+        return $this->subQuantities->count() > 1;
+    }
 }
