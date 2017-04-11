@@ -1,9 +1,12 @@
 @import "variables";
 @import "helpers";
 
-// partials and pages
+// partials
 @import "header";
 @import "footer";
+
+// pages
+@import "home";
 
 * {
   box-sizing: border-box;

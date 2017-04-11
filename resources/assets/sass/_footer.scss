@@ -1,6 +1,11 @@
 .footer {
   @include content-container;
 
+  margin: {
+    top: 1em;
+    bottom: 1em;
+  }
+
   // flex
   display: flex;
 }

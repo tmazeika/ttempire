@@ -1,0 +1,49 @@
+.welcome {
+  $border: 2px solid $light-color;
+
+  border: {
+    top: $border;
+    bottom: $border;
+  }
+
+  padding: {
+    top: 3em;
+    bottom: 3em;
+  }
+
+  // flex
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-text-container {
+  margin-right: 10em;
+  text-align: center;
+}
+
+.welcome-text {
+  font: 300 4em/1.2 $font;
+
+  &.small {
+    font-size: 2em;
+  }
+}
+
+.welcome-button {
+  background-color: $accent-color;
+  border: 1px solid darken($accent-color, 10%);
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font: 400 2em/1 $font;
+  outline: none;
+
+  transition: background-color $anim-time;
+
+  padding: 1rem;
+
+  &:hover {
+    background-color: lighten($accent-color, 10%);
+  }
+}
