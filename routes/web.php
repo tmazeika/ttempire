@@ -17,13 +17,15 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'shop'], function () {
     Route::get('/', 'ShopController@index');
-    Route::get('{product}', 'ShopController@showProduct');
-});
 
-Route::group(['prefix' => 'cart'], function () {
-    Route::get('add/{product}/{subQuantity}', 'CartController@add');
-    Route::get('subtract/{product}/{subQuantity}', 'CartController@subtract');
-    Route::get('set/{product}/{subQuantity}/{count}', 'CartController@set');
+    Route::group(['prefix' => 'cart'], function () {
+        Route::get('/', 'CartController@index');
+        Route::get('add/{product}/{subQuantity}', 'CartController@add');
+        Route::get('subtract/{product}/{subQuantity}', 'CartController@subtract');
+        Route::get('set/{product}/{subQuantity}/{count}', 'CartController@set');
+    });
+
+    Route::get('{product}', 'ShopController@showProduct');
 });
 
 Route::get('contact', function () {
