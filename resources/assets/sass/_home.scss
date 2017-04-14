@@ -45,5 +45,6 @@
 
   &:hover {
     background-color: lighten($accent-color, 10%);
+    border-color: $accent-color;
   }
 }

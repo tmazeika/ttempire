@@ -21,8 +21,9 @@ Route::group(['prefix' => 'shop'], function () {
 });
 
 Route::group(['prefix' => 'cart'], function () {
-    Route::get('{product}/add', 'CartController@add');
-    Route::get('{product}/subtract', 'CartController@subtract');
+    Route::get('add/{product}/{subQuantity}', 'CartController@add');
+    Route::get('subtract/{product}/{subQuantity}', 'CartController@subtract');
+    Route::get('set/{product}/{subQuantity}/{count}', 'CartController@set');
 });
 
 Route::get('contact', function () {

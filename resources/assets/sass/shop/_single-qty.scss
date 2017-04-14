@@ -1,0 +1,49 @@
+.product-view-single-price {
+  color: darken($accent-color, 10%);
+  font: 400 2em/1.5 $font;
+}
+
+.product-view-single-qty {
+  // flex
+  display: flex;
+  align-items: center;
+
+  .product-view-button {
+    border: 1px solid;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font: 400 2em/1 $font;
+    outline: none;
+
+    transition: background-color $anim-time;
+
+    padding: 1rem;
+
+    &.subtract {
+      background-color: $dim-color;
+      border-color: darken($dim-color, 10%);
+
+      &:hover {
+        background-color: lighten($dim-color, 10%);
+        border-color: $dim-color;
+      }
+    }
+
+    &.add {
+      background-color: $accent-color;
+      border-color: darken($accent-color, 10%);
+
+      &:hover {
+        background-color: lighten($accent-color, 10%);
+        border-color: $accent-color;
+      }
+    }
+  }
+
+  .product-view-qty {
+    font: 300 2em/1 $font;
+
+    margin: 0 1rem;
+  }
+}

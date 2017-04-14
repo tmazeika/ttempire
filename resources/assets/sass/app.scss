@@ -7,8 +7,10 @@
 
 // pages
 @import "home";
-@import "shop";
-@import "product";
+@import "shop/shop";
+@import "shop/product";
+@import "shop/single-qty";
+@import "shop/multiple-qty";
 @import "contact";
 
 * {

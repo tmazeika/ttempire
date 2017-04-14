@@ -3,18 +3,27 @@
 @php($title = $product->title)
 
 @section('content')
-    <div class="products-view-container">
-        <img class="products-view-img" src="{{ $product->getImgAsset() }}"/>
+    <div class="product-view-container" data-multiple-qty="{{ $multipleQty ? 'true' : 'false' }}">
+        <img class="product-view-img" src="{{ $product->getImgAsset() }}"/>
 
-        <header class="products-view-header">
-            <h1 class="products-view-title">{{ $product->title }}</h1>
-            <span class="products-view-description">{{ $product->description }}</span>
+        <header class="product-view-header">
+            <h1 class="product-view-title">{{ $product->title }}</h1>
+
+            @if(!$multipleQty)
+                <div class="product-view-single-price">${{ $product->getOnlySubQuantityPrice() / 100 }}</div>
+            @endif
+
+            <div class="product-view-description">{{ $product->description }}</div>
         </header>
 
-        @if($product->hasMultipleSubQuantities())
-            @include('partials.shop.multiple-qty')
-        @else
+        @if(!$multipleQty)
+            <div class="flex-spacer"></div>
+
             @include('partials.shop.single-qty')
         @endif
     </div>
+
+    @if($multipleQty)
+        @include('partials.shop.multiple-qty')
+    @endif
 @endsection
