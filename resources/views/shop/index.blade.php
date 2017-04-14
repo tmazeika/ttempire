@@ -11,7 +11,7 @@
             <div class="product">
                 <img class="product-img" src="{{ $product->getImgAsset() }}"/>
                 <div class="product-title">
-                    <a href="{{ url('shop') }}">{{ $product->title }}</a>
+                    <a href="{{ url("shop/$product->slug") }}">{{ $product->title }}</a>
                 </div>
                 <div class="product-description">{{ $product->description }}</div>
                 <div class="product-price">

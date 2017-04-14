@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('shop', 'ShopController@index');
+Route::group(['prefix' => 'shop'], function () {
+    Route::get('/', 'ShopController@index');
+    Route::get('{product}', 'ShopController@showProduct');
+});
 
 Route::get('contact', function () {
     return view('contact');

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function category()
     {
         return $this->belongsTo('TTEmpire\Category');
@@ -18,7 +23,7 @@ class Product extends Model
 
     public function getImgAsset()
     {
-        return asset("img/$this->id.jpg");
+        return asset("img/products/$this->id.jpg");
     }
 
     public function getCheapestSubQuantity()

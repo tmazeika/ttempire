@@ -19,7 +19,8 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
 
-            $table->string('title');
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
             $table->string('description');
 
             $table->timestamps();
