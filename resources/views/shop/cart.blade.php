@@ -63,6 +63,7 @@
                         </td>
                     </tr>
                 @endforeach
+
                 <tr class="standalone">
                     <td colspan="2"></td>
                     <td class="bold">Shipping</td>
