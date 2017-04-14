@@ -2,59 +2,43 @@
 
 namespace TTEmpire\Http\Controllers;
 
+use TTEmpire\Contracts\CartServiceContract;
 use TTEmpire\Product;
 use TTEmpire\SubQuantity;
 
 class CartController extends Controller
 {
+    /** @var CartServiceContract $cartService */
+    private $cartService;
+
+    public function __construct(CartServiceContract $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
+    public function index()
+    {
+        return view('shop.cart');
+    }
+
     public function add(Product $product, SubQuantity $subQuantity)
     {
-        $count = $this->getCount($product, $subQuantity);
+        $this->cartService->addCount($product, $subQuantity, 1);
 
-        if ($count === PHP_INT_MAX) {
-            abort(400, 'Count Too Large');
-        }
-
-        return response()->json([
-            'new_count' => $this->setCount($product, $subQuantity, $count + 1),
-        ]);
+        return redirect()->back();
     }
 
     public function subtract(Product $product, SubQuantity $subQuantity)
     {
-        $count = $this->getCount($product, $subQuantity);
+        $this->cartService->addCount($product, $subQuantity, -1);
 
-        if ($count === 0) {
-            abort(400, 'Negative Count');
-        }
-
-        return response()->json([
-            'new_count' => $this->setCount($product, $subQuantity, $count - 1),
-        ]);
+        return redirect()->back();
     }
 
     public function set(Product $product, SubQuantity $subQuantity, int $count)
     {
-        if ($count < 0) {
-            abort(400, 'Negative Count');
-        } else if ($count > PHP_INT_MAX) {
-            abort(400, 'Count Too Large');
-        }
+        $this->cartService->setCount($product, $subQuantity, $count);
 
-        return response()->json([
-            'new_count' => $this->setCount($product, $subQuantity, $count),
-        ]);
-    }
-
-    private function getCount(Product $product, SubQuantity $subQuantity): int
-    {
-        return session("cart.$product->id.$subQuantity->id", 0);
-    }
-
-    private function setCount(Product $product, SubQuantity $subQuantity, int $count): int
-    {
-        session(["cart.$product->id.$subQuantity->id" => $count]);
-
-        return $count;
+        return redirect()->back();
     }
 }

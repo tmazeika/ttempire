@@ -174,6 +174,7 @@ return [
         TTEmpire\Providers\AppServiceProvider::class,
         TTEmpire\Providers\AuthServiceProvider::class,
         // TTEmpire\Providers\BroadcastServiceProvider::class,
+        TTEmpire\Providers\ComposerServiceProvider::class,
         TTEmpire\Providers\EventServiceProvider::class,
         TTEmpire\Providers\RouteServiceProvider::class,
 

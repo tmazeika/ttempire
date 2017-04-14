@@ -44,6 +44,7 @@
   .product-view-qty {
     font: 300 2em/1 $font;
 
-    margin: 0 1rem;
+    min-width: 2em;
+    text-align: center;
   }
 }

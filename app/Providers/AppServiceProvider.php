@@ -26,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'TTEmpire\Contracts\CartServiceContract',
+            'TTEmpire\Services\CartService'
+        );
     }
 }

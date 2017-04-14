@@ -19,7 +19,7 @@
                             <a href="{{ url('cart/subtract', [$product->slug, $subQuantity->id]) }}">
                                 <button class="product-view-button subtract">&minus;</button>
                             </a>
-                            <div class="product-view-qty">0</div>
+                            <div class="product-view-qty">{{ $cart->getCount($product, $subQuantity) }}</div>
                             <a href="{{ url('cart/add', [$product->slug, $subQuantity->id]) }}">
                                 <button class="product-view-button add">&plus;</button>
                             </a>

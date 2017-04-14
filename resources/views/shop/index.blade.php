@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="products-container">
-        @foreach(\TTEmpire\Product::all() as $product)
+        @foreach($products as $product)
             <div class="product">
                 <img class="product-img" src="{{ $product->getImgAsset() }}"/>
                 <div class="product-title">
