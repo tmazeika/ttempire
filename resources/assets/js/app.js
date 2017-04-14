@@ -8,7 +8,7 @@ $('a[data-cart-link]').on('click', function () {
     $.ajax($(this).attr('href'), {
         success: function (data) {
             if (set) {
-                $(e).closest('tr').hide('slow', function () {
+                $(e).closest('tr').hide('medium', function () {
                     $(this).remove();
 
                     if ($('.cart-table tbody tr').length === 0) {
