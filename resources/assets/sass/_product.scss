@@ -1,0 +1,32 @@
+.products-view-container {
+  @include content-container;
+
+  // flex
+  display: flex;
+  align-items: center;
+}
+
+.products-view-img {
+  border-radius: 20px;
+
+  width:auto;
+  height: auto;
+  max-width: 15em;
+  max-height: 15em;
+  margin: 2em;
+}
+
+.products-view-header {
+
+}
+
+.products-view-title {
+  font: 400 2em/1.5 $font;
+
+  margin: 0;
+}
+
+.products-view-description {
+  color: $dim-color;
+  font: 300 1em/1.5 $font;
+}

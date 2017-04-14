@@ -20,6 +20,11 @@ Route::group(['prefix' => 'shop'], function () {
     Route::get('{product}', 'ShopController@showProduct');
 });
 
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('{product}/add', 'CartController@add');
+    Route::get('{product}/subtract', 'CartController@subtract');
+});
+
 Route::get('contact', function () {
     return view('contact');
 });

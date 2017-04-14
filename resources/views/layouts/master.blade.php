@@ -10,7 +10,7 @@
     <style>
         @font-face {
             font-family: Hind;
-            src: url({{ asset('hind.ttf') }}) format('truetype');
+            src: url({{ asset('fonts/hind.ttf') }}) format('truetype');
         }
     </style>
 
