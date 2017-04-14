@@ -8,9 +8,9 @@ use TTEmpire\SubQuantity;
 
 interface CartServiceContract
 {
-    public function addCount(Product $product, SubQuantity $subQuantity, int $count): void;
+    public function addCount(Product $product, SubQuantity $subQuantity, int $count): int;
 
-    public function setCount(Product $product, SubQuantity $subQuantity, int $count): void;
+    public function setCount(Product $product, SubQuantity $subQuantity, int $count): int;
 
     public function getCount(Product $product, SubQuantity $subQuantity): int;
 

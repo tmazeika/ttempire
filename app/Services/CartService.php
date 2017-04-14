@@ -9,17 +9,17 @@ use TTEmpire\SubQuantity;
 
 class CartService implements CartServiceContract
 {
-    public function addCount(Product $product, SubQuantity $subQuantity, int $count): void
+    public function addCount(Product $product, SubQuantity $subQuantity, int $count): int
     {
         $currentCount = $this->getCount($product, $subQuantity);
 
-        $this->setCount($product, $subQuantity, $currentCount + $count);
+        return $this->setCount($product, $subQuantity, $currentCount + $count);
     }
 
-    public function setCount(Product $product, SubQuantity $subQuantity, int $count): void
+    public function setCount(Product $product, SubQuantity $subQuantity, int $count): int
     {
         if ($count < 0 || $count > PHP_INT_MAX) {
-            return;
+            return 0;
         }
 
         if ($count === 0) {
@@ -27,6 +27,8 @@ class CartService implements CartServiceContract
         } else {
             session(["cart.$product->id.$subQuantity->id" => $count]);
         }
+
+        return $count;
     }
 
     public function getCount(Product $product, SubQuantity $subQuantity): int
