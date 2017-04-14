@@ -28,12 +28,7 @@ class Product extends Model
 
     public function getCheapestSubQuantity()
     {
-        return $this->subQuantities->sortBy('usd_price')->first();
-    }
-
-    public function getOnlySubQuantityPrice()
-    {
-        return $this->subQuantities->first()->usd_price;
+        return $this->subQuantities->sortBy('eur_price')->first();
     }
 
     public function hasMultipleSubQuantities()

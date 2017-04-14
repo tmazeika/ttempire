@@ -24,6 +24,10 @@
   margin: 0;
 }
 
+.product-view-price {
+  color: darken($accent-color, 10%);
+}
+
 .product-view-description {
   color: $dim-color;
   font: 300 1em/1.5 $font;

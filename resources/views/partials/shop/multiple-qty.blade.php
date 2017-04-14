@@ -12,14 +12,14 @@
             @foreach($product->subQuantities as $subQty)
                 <tr>
                     <td>{{ $subQty->quantity }}</td>
-                    <td class="product-view-multiple-price">${{ $subQty->usd_price / 100}}</td>
-                    <td>${{ $subQty->unitUsdPrice() }}</td>
+                    <td class="product-view-price">{{ $subQty->usdPrice() }}</td>
+                    <td>{{ $subQty->unitUsdPrice() }}</td>
                     <td>
                         <div class="product-view-multiple-qty-buttons">
                             <a href="{{ url('shop/cart/subtract', [$product->slug, $subQty->id]) }}" data-cart-link>
                                 <button class="product-view-button subtract">&minus;</button>
                             </a>
-                            <div class="product-view-qty" data-sub-qty="{{ $subQty->id }}">{{ $cart->getCount($product, $subQty) }}</div>
+                            <div class="product-qty product-view-qty" data-sub-qty="{{ $subQty->id }}">{{ $cart->getCount($product, $subQty) }}</div>
                             <a href="{{ url('shop/cart/add', [$product->slug, $subQty->id]) }}" data-cart-link>
                                 <button class="product-view-button add">&plus;</button>
                             </a>

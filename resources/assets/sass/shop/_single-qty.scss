@@ -1,5 +1,4 @@
 .product-view-single-price {
-  color: darken($accent-color, 10%);
   font: 400 2em/1.5 $font;
 }
 
@@ -11,7 +10,6 @@
   .product-view-button {
     border: 1px solid;
     border-radius: 5px;
-    color: #fff;
     cursor: pointer;
     font: 400 2em/1 $font;
     outline: none;
@@ -21,18 +19,20 @@
     padding: 1rem;
 
     &.subtract {
-      background-color: $dim-color;
-      border-color: darken($dim-color, 10%);
+      background-color: $light-color;
+      border-color: darken($light-color, 5%);
+      color: $dark-color;
 
       &:hover {
-        background-color: lighten($dim-color, 10%);
-        border-color: $dim-color;
+        background-color: lighten($light-color, 5%);
+        border-color: $light-color;
       }
     }
 
     &.add {
       background-color: $accent-color;
       border-color: darken($accent-color, 10%);
+      color: #fff;
 
       &:hover {
         background-color: lighten($accent-color, 10%);
