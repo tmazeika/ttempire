@@ -99,6 +99,14 @@
     }
   }
 
+  tr.standalone td {
+    padding: 1.5rem 0.5rem;
+
+    &.bold {
+      font-weight: bold;
+    }
+  }
+
   td {
     border-bottom: 1px solid $light-color;
     font: 300 1.5em/1 $font;
@@ -111,4 +119,11 @@
       width: 4em;
     }
   }
+}
+
+.cart-checkout-button {
+  @extend .cart-qty-button;
+  @extend .cart-qty-button.add;
+
+  padding: 1rem;
 }

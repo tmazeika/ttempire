@@ -11,7 +11,7 @@
         <tbody>
             @foreach($product->subQuantities as $subQty)
                 <tr>
-                    <td>{{ $subQty->quantity }}</td>
+                    <td>{{ $subQty->quantity() }}</td>
                     <td class="product-view-price">{{ $subQty->usdPrice() }}</td>
                     <td>{{ $subQty->unitUsdPrice() }}</td>
                     <td>

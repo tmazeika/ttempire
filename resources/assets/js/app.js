@@ -13,7 +13,7 @@ $('a[data-cart-link]').on('click', function () {
 
                     if ($('.cart-table tbody tr').length === 0) {
                         $('.cart-no-items').show();
-                        $('.cart-table').hide();
+                        $('.cart').hide();
                     }
                 });
             }
@@ -23,6 +23,7 @@ $('a[data-cart-link]').on('click', function () {
             }
 
             $('.header-cart-count').text(data.cart_count);
+            $('.cart-checkout-button').text(`Checkout ($${data.total.toLocaleString()})`);
         }
     });
 

@@ -20,17 +20,7 @@ class CartController extends Controller
 
     public function index()
     {
-        // convert a nested array of product ID's to sub-quantity ID's to counts into a flat array of cart items
-        $cartItems = $this->cartService
-            ->all()
-            ->map(function (array $subQuantities, int $productId) {
-                return collect($subQuantities)->map(function (int $count, int $subQuantity) use ($productId) {
-                    return new CartItem(Product::find($productId), SubQuantity::find($subQuantity), $count);
-                });
-            })
-            ->flatten();
-
-        return view('shop.cart', compact('cartItems'));
+        return view('shop.cart', ['cartItems' => $this->cartService->allCartItems()]);
     }
 
     public function add(Product $product, SubQuantity $subQuantity)
@@ -63,6 +53,7 @@ class CartController extends Controller
             'sub_qty_count' => $count,
             'subtotal' => $subQuantity->usdPrice($count),
             'cart_count' => $this->cartService->getTotalCount(),
+            'total' => $this->cartService->getSubtotal() + 6,
         ]);
     }
 }

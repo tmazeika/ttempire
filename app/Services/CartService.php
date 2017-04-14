@@ -3,6 +3,7 @@
 namespace TTEmpire\Services;
 
 use Illuminate\Support\Collection;
+use TTEmpire\CartItem;
 use TTEmpire\Contracts\CartServiceContract;
 use TTEmpire\Product;
 use TTEmpire\SubQuantity;
@@ -39,6 +40,29 @@ class CartService implements CartServiceContract
     public function getTotalCount(): int
     {
         return $this->all()->flatten()->sum();
+    }
+
+    public function getSubtotal(): int
+    {
+        return $this
+            ->allCartItems()
+            ->map(function (CartItem $cartItem) {
+                return $cartItem->subQuantity->usd_price * $cartItem->count;
+            })
+            ->sum() / 100;
+    }
+
+    public function allCartItems(): Collection
+    {
+        // convert a nested array of product ID's to sub-quantity ID's to counts into a flat array of cart items
+        return $this
+            ->all()
+            ->map(function (array $subQuantities, int $productId) {
+                return collect($subQuantities)->map(function (int $count, int $subQuantity) use ($productId) {
+                    return new CartItem(Product::find($productId), SubQuantity::find($subQuantity), $count);
+                });
+            })
+            ->flatten();
     }
 
     public function all(): Collection

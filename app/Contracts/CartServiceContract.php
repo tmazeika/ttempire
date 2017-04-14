@@ -16,5 +16,9 @@ interface CartServiceContract
 
     public function getTotalCount(): int;
 
+    public function getSubtotal(): int;
+
+    public function allCartItems(): Collection;
+
     public function all(): Collection;
 }

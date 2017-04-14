@@ -11,6 +11,11 @@ class SubQuantity extends Model
         return $this->belongsTo('TTEmpire\Product');
     }
 
+    public function quantity()
+    {
+        return number_format($this->quantity, 0);
+    }
+
     public function usdPrice(int $count = 1)
     {
         return '$' . number_format($this->usd_price * $count / 100.0, 0);
