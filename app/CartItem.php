@@ -19,4 +19,9 @@ class CartItem
         $this->subQuantity = $subQuantity;
         $this->count = $count;
     }
+
+    public function id(): string
+    {
+        return $this->product->id . '-' . $this->subQuantity->id;
+    }
 }
