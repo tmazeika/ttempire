@@ -33,7 +33,11 @@ class OnPull extends Command
      */
     public function handle()
     {
-        $this->call('migrate');
+        $env = config('app.env');
+
+        $this->call('migrate', [
+            'env' => 'dev',
+        ]);
 
         $cwd = getcwd();
         chdir(base_path());
