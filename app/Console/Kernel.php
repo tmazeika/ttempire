@@ -4,7 +4,6 @@ namespace TTEmpire\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use TTEmpire\Console\Commands\OnPull;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        OnPull::class,
+        Commands\OnPull::class,
     ];
 
     /**
