@@ -39,8 +39,7 @@ class OnPull extends Command
         chdir(base_path());
 
         // migrate
-        $artisan = base_path('artisan');
-        `php $artisan --env=dev migrate`;
+        `php artisan --env=dev migrate`;
 
         // composer install
         $root = base_path();
