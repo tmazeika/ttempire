@@ -34,7 +34,6 @@ class OnPull extends Command
     public function handle()
     {
         $env = config('app.env');
-
         $cwd = getcwd();
         chdir(base_path());
 
@@ -42,12 +41,10 @@ class OnPull extends Command
         exec('php artisan --env=dev migrate');
 
         // composer install
-        $root = base_path();
-        exec("composer -d $root -n install");
+        exec("composer install");
 
         // npm install
-        $npmDir = base_path('.npm');
-        exec("NPM_PACKAGES=\"$npmDir\"; npm install");
+        exec("NPM_PACKAGES='.npm'; npm install");
 
         // npm run script
         $script = $env;
@@ -56,8 +53,7 @@ class OnPull extends Command
             $script = 'dev';
         }
 
-        exec("NPM_PACKAGES=\"$npmDir\"; npm run $script");
-
+        exec("NPM_PACKAGES='.npm'; npm run $script");
         chdir($cwd);
     }
 }
