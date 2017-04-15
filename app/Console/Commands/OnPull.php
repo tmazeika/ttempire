@@ -42,8 +42,8 @@ class OnPull extends Command
         $root = base_path();
         `composer -d $root -n install`;
 
-        // npm update
-        `npm update`;
+        // npm install
+        `npm install`;
 
         // npm run script
         $script = env('APP_ENV', 'production');
