@@ -36,7 +36,7 @@ class OnPull extends Command
         $env = config('app.env');
 
         $this->call('migrate', [
-            'env' => 'dev',
+            '--env' => 'dev',
         ]);
 
         $cwd = getcwd();
