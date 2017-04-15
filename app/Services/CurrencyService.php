@@ -18,6 +18,11 @@ class CurrencyService implements CurrencyServiceContract
             : $subQuantity->usd_price;
     }
 
+    public function getFloatPrice(int $price): float
+    {
+        return $price / 100.0;
+    }
+
     public function formatPrice(float $price, int $decimals = 0): string
     {
         return ($this->getCurrency() === self::CUR_EUR ? '&euro;' : '$')

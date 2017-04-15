@@ -20,10 +20,10 @@ $('a[data-cart-link]').on('click', function () {
             else {
                 $(`.product-qty[data-sub-qty="${data.sub_qty}"]`).html(data.sub_qty_count);
                 $(`.cart-subtotal[data-sub-qty="${data.sub_qty}"]`).html(data.subtotal);
+                $('.cart-checkout-button').html(`Checkout (&#8202;${data.total}&#8202;)`);
             }
 
             $('.header-cart-count').html(data.cart_count);
-            $('.cart-checkout-button').html(`Checkout (&#8202;${data.total})&#8202;`);
         }
     });
 

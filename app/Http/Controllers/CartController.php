@@ -52,13 +52,15 @@ class CartController extends Controller
     private function buildResponse(SubQuantity $subQuantity, \Closure $countSetter): JsonResponse
     {
         $count = $countSetter();
+        $total = $this->cartService->getSubtotal();
 
         return response()->json([
             'sub_qty' => $subQuantity->id,
             'sub_qty_count' => $count,
             'subtotal' => $this->currencyService->getAndFormatPrice($subQuantity, 0, $count),
             'cart_count' => $this->cartService->getTotalCount(),
-            'total' => $this->currencyService->formatPrice($this->cartService->getSubtotal(), 0),
+            'total' => $this->currencyService->formatPrice($total, 0),
+            'total_raw' => $this->currencyService->getFloatPrice($total),
         ]);
     }
 }
