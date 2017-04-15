@@ -35,28 +35,29 @@ class OnPull extends Command
     {
         $env = config('app.env');
 
-        $this->call('migrate', [
-            '--env' => 'dev',
-        ]);
-
         $cwd = getcwd();
         chdir(base_path());
+
+        // migrate
+        $artisan = base_path('artisan');
+        `php $artisan --env=dev migrate`;
 
         // composer install
         $root = base_path();
         `composer -d $root -n install`;
 
         // npm install
-        `npm install`;
+        $npmDir = base_path('.npm');
+        `NPM_PACKAGES="$npmDir"; npm install`;
 
         // npm run script
-        $script = env('APP_ENV', 'production');
+        $script = $env;
 
-        if ($script !== 'production') {
+        if ($env !== 'production') {
             $script = 'dev';
         }
 
-        `npm run $script`;
+        `NPM_PACKAGES="$npmDir"; npm run $script`;
 
         chdir($cwd);
     }
