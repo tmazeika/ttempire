@@ -20,14 +20,14 @@ class CurrencyService implements CurrencyServiceContract
 
     public function getFloatPrice(int $price): float
     {
-        return $price / 100.0;
+        return round($price / 100.0, 2);
     }
 
     public function formatPrice(float $price, int $decimals = 0): string
     {
         return ($this->getCurrency() === self::CUR_EUR ? '&euro;' : '$')
             . '&#8202;'
-            . number_format($price / 100, $decimals);
+            . number_format(round($price / 100, $decimals), $decimals);
     }
 
     public function getAndFormatPrice(SubQuantity $subQuantity, int $decimals = 0, int $count = 1): string
