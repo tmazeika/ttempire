@@ -35,7 +35,7 @@ class SubQuantitiesTableSeeder extends Seeder
                'product_id' => 1,
                'quantity' => 1500,
                'eur_price' => 52500,
-               'usd_price' => 39200,
+               'usd_price' => 55700,
            ],
            [
                'product_id' => 2,
