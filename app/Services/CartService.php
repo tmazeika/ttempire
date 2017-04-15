@@ -5,11 +5,22 @@ namespace TTEmpire\Services;
 use Illuminate\Support\Collection;
 use TTEmpire\CartItem;
 use TTEmpire\Contracts\CartServiceContract;
+use TTEmpire\Contracts\CurrencyServiceContract;
 use TTEmpire\Product;
 use TTEmpire\SubQuantity;
 
 class CartService implements CartServiceContract
 {
+    private const SHIPPING_EUR = 600, SHIPPING_USD = 600;
+
+    /** @var CurrencyServiceContract $currencyService */
+    private $currencyService;
+
+    public function __construct(CurrencyServiceContract $currencyService)
+    {
+        $this->currencyService = $currencyService;
+    }
+
     public function addCount(Product $product, SubQuantity $subQuantity, int $count): int
     {
         $currentCount = $this->getCount($product, $subQuantity);
@@ -47,9 +58,9 @@ class CartService implements CartServiceContract
         return $this
             ->allCartItems()
             ->map(function (CartItem $cartItem) {
-                return $cartItem->subQuantity->usd_price * $cartItem->count;
+                return $this->currencyService->getPrice($cartItem->subQuantity) * $cartItem->count;
             })
-            ->sum() / 100;
+            ->sum() + $this->getShippingPrice();
     }
 
     public function allCartItems(): Collection
@@ -68,5 +79,12 @@ class CartService implements CartServiceContract
     public function all(): Collection
     {
         return collect(session('cart', []));
+    }
+
+    public function getShippingPrice(): int
+    {
+        return $this->currencyService->isEur()
+            ? self::SHIPPING_EUR
+            : self::SHIPPING_USD;
     }
 }

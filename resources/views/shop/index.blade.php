@@ -16,9 +16,9 @@
                 <div class="product-description">{{ $product->description }}</div>
                 <div class="product-price">
                     @if ($product->hasMultipleSubQuantities())
-                        From {{ $product->getCheapestSubQuantity()->usdPrice() }}
+                        From {{ $currencyService->getAndFormatPrice($product->getCheapestSubQuantity()) }}
                     @else
-                        {{ $product->subQuantities->first()->usdPrice() }}
+                        {{ $currencyService->getAndFormatPrice($product->subQuantities->first()) }}
                     @endif
                 </div>
             </div>

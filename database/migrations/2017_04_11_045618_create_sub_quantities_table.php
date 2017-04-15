@@ -20,8 +20,8 @@ class CreateSubQuantitiesTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
             $table->integer('quantity')->unsigned();
-            $table->integer('usd_price')->unsigned();
             $table->integer('eur_price')->unsigned();
+            $table->integer('usd_price')->unsigned();
 
             $table->timestamps();
         });

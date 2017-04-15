@@ -5,6 +5,7 @@ namespace TTEmpire\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use TTEmpire\CartItem;
 use TTEmpire\Contracts\CartServiceContract;
+use TTEmpire\Contracts\CurrencyServiceContract;
 use TTEmpire\Product;
 use TTEmpire\SubQuantity;
 
@@ -13,9 +14,13 @@ class CartController extends Controller
     /** @var CartServiceContract $cartService */
     private $cartService;
 
-    public function __construct(CartServiceContract $cartService)
+    /** @var CurrencyServiceContract $currencyService */
+    private $currencyService;
+
+    public function __construct(CartServiceContract $cartService, CurrencyServiceContract $currencyService)
     {
         $this->cartService = $cartService;
+        $this->currencyService = $currencyService;
     }
 
     public function index()
@@ -51,9 +56,9 @@ class CartController extends Controller
         return response()->json([
             'sub_qty' => $subQuantity->id,
             'sub_qty_count' => $count,
-            'subtotal' => $subQuantity->usdPrice($count),
+            'subtotal' => $this->currencyService->getAndFormatPrice($subQuantity, 0, $count),
             'cart_count' => $this->cartService->getTotalCount(),
-            'total' => $this->cartService->getSubtotal() + 6,
+            'total' => $this->cartService->getSubtotal(),
         ]);
     }
 }

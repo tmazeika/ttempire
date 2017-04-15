@@ -17,6 +17,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer('*', function (View $view) {
             $view->with('cart', app()->make('TTEmpire\Contracts\CartServiceContract'));
         });
+
+        view()->composer('shop.*', function (View $view) {
+            $view->with('currencyService', app()->make('TTEmpire\Contracts\CurrencyServiceContract'));
+        });
     }
 
     /**

@@ -35,9 +35,9 @@
                                 <div class="cart-sub">Box of {{ $cartItem->subQuantity->quantity() }}</div>
                             @endif
                         </td>
-                        <td>{{ $cartItem->subQuantity->usdPrice() }}</td>
+                        <td>{{ $currencyService->getAndFormatPrice($cartItem->subQuantity) }}</td>
                         <td class="product-view-price cart-subtotal" data-sub-qty="{{ $cartItem->subQuantity->id }}">
-                            {{ $cartItem->subQuantity->usdPrice($cartItem->count) }}
+                            {{ $currencyService->getAndFormatPrice($cartItem->subQuantity, 0, $cartItem->count) }}
                         </td>
                         <td>
                             <div class="cart-qty-buttons">
@@ -67,10 +67,13 @@
                 <tr class="standalone">
                     <td colspan="2"></td>
                     <td class="bold">Shipping</td>
-                    <td>$6</td>
+                    <td>{{ $currencyService->formatPrice($cart->getShippingPrice()) }}</td>
                     <td>
                         <a href="{{ url('shop/cart') }}">
-                            <button class="cart-checkout-button">Checkout (${{ number_format($cart->getSubtotal() + 6, 0) }})</button>
+                            <button class="cart-checkout-button">
+                                Checkout
+                                ({{ $currencyService->formatPrice($cart->getSubtotal()) }})
+                            </button>
                         </a>
                     </td>
                 </tr>

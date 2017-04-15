@@ -30,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
             'TTEmpire\Contracts\CartServiceContract',
             'TTEmpire\Services\CartService'
         );
+
+        $this->app->bind(
+            'TTEmpire\Contracts\CurrencyServiceContract',
+            'TTEmpire\Services\CurrencyService'
+        );
     }
 }

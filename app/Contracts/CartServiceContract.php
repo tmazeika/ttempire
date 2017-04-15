@@ -21,4 +21,6 @@ interface CartServiceContract
     public function allCartItems(): Collection;
 
     public function all(): Collection;
+
+    public function getShippingPrice(): int;
 }
