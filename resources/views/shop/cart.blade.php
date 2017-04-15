@@ -72,7 +72,7 @@
                         <a href="{{ url('shop/cart') }}">
                             <button class="cart-checkout-button">
                                 Checkout
-                                ({{ $currencyService->formatPrice($cart->getSubtotal()) }})
+                                (&#8202;{{ $currencyService->formatPrice($cart->getSubtotal()) }}&#8202;)
                             </button>
                         </a>
                     </td>

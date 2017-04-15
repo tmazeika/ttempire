@@ -58,7 +58,7 @@ class CartController extends Controller
             'sub_qty_count' => $count,
             'subtotal' => $this->currencyService->getAndFormatPrice($subQuantity, 0, $count),
             'cart_count' => $this->cartService->getTotalCount(),
-            'total' => $this->cartService->getSubtotal(),
+            'total' => $this->currencyService->formatPrice($this->cartService->getSubtotal(), 0),
         ]);
     }
 }

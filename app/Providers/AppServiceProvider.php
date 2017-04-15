@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('active', function (string $page) {
             return '<?php if (isset($active) && $active === "' . addslashes($page) . '") echo "active"; ?>';
         });
+
+        Blade::directive('activeCurrency', function (string $currency) {
+            return '<?php if ($currencyService->getCurrency() === "' . addslashes($currency) . '") echo "active"; ?>';
+        });
     }
 
     /**

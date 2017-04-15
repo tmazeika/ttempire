@@ -18,6 +18,22 @@
   display: block;
   margin: 1rem;
 
+  &.currency {
+    // flex
+    display: flex;
+    align-items: center;
+
+    &:not(:hover):not(.active) img {
+      opacity: 0.75;
+    }
+
+    img {
+      transition: opacity $anim-time;
+
+      margin-right: 0.5rem;
+    }
+  }
+
   &:first-child {
     margin-left: 0;
   }

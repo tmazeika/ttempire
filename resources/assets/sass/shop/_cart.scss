@@ -125,5 +125,6 @@
   @extend .cart-qty-button;
   @extend .cart-qty-button.add;
 
+  min-width: 9em;
   padding: 1rem;
 }

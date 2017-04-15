@@ -11,19 +11,19 @@ $('a[data-cart-link]').on('click', function () {
                 $(e).closest('tr').hide('medium', function () {
                     $(this).remove();
 
-                    if ($('.cart-table tbody tr').length === 0) {
+                    if ($('.cart-table tbody tr:not(.standalone)').length === 0) {
                         $('.cart-no-items').show();
                         $('.cart').hide();
                     }
                 });
             }
             else {
-                $(`.product-qty[data-sub-qty="${data.sub_qty}"]`).text(data.sub_qty_count);
-                $(`.cart-subtotal[data-sub-qty="${data.sub_qty}"]`).text(data.subtotal);
+                $(`.product-qty[data-sub-qty="${data.sub_qty}"]`).html(data.sub_qty_count);
+                $(`.cart-subtotal[data-sub-qty="${data.sub_qty}"]`).html(data.subtotal);
             }
 
-            $('.header-cart-count').text(data.cart_count);
-            $('.cart-checkout-button').text(`Checkout ($${data.total.toLocaleString()})`);
+            $('.header-cart-count').html(data.cart_count);
+            $('.cart-checkout-button').html(`Checkout (&#8202;${data.total})&#8202;`);
         }
     });
 

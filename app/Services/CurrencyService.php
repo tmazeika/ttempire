@@ -21,6 +21,7 @@ class CurrencyService implements CurrencyServiceContract
     public function formatPrice(float $price, int $decimals = 0): string
     {
         return ($this->getCurrency() === self::CUR_EUR ? '&euro;' : '$')
+            . '&#8202;'
             . number_format($price / 100, $decimals);
     }
 
