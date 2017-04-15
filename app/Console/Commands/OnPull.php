@@ -38,9 +38,9 @@ class OnPull extends Command
         $cwd = getcwd();
         chdir(base_path());
 
-        // composer update
+        // composer install
         $root = base_path();
-        `composer -d $root -n update`;
+        `composer -d $root -n install`;
 
         // npm update
         `npm update`;
